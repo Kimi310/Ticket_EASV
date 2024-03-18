@@ -86,6 +86,32 @@ public class EventCoordinatorViewController implements Initializable {
         }
     }
 
+    protected void updateEventProperties(String name){
+        //Check If the event already exist
+        boolean eventExists = false;
+        Event existingEvent = null;
+
+        //modify existing event properties
+        for (Event event : eventTable.getItems()){
+            if (event.getName().equals(name)){
+                existingEvent = event;
+                existingEvent.setName(name);
+                //implement db update of event
+
+                eventExists = true;
+                break;
+            }
+        }
+
+        //If the event doesnt exist, add a new one
+        if (!eventExists){
+            Event newEvent = new Event(name);
+            //implement db addition of event
+
+            eventTable.getItems().add(newEvent);
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         poluteEvents();

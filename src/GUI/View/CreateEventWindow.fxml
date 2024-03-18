@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="createEventWindow" prefHeight="337.0" prefWidth="462.0" style="-fx-background-color: blue; -fx-border-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateEventViewController">
+<AnchorPane fx:id="createEventWindow" prefHeight="337.0" prefWidth="462.0" style="-fx-background-color: blue; -fx-border-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateEventViewController">
    <children>
       <Pane layoutX="37.0" layoutY="37.0" prefHeight="263.0" prefWidth="388.0" style="-fx-border-color: white;">
          <children>
@@ -43,7 +43,7 @@
             <Font name="Corbel Light" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="nameNewEventButton" layoutX="161.0" layoutY="64.0" onAction="#nameNewEventBtn" prefHeight="30.0" prefWidth="198.0" />
+      <TextField fx:id="eventNameField" layoutX="161.0" layoutY="64.0" prefHeight="30.0" prefWidth="198.0" />
    </children>
    <effect>
       <DropShadow blurType="TWO_PASS_BOX" />

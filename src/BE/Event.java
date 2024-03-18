@@ -19,6 +19,11 @@ public class Event {
         this.locationGuidance = locationGuidance;
     }
 
+    //test event addition, will delete later
+    public Event(String name){
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
