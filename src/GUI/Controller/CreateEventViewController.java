@@ -5,29 +5,33 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class CreateEventViewController {
-    public TextField eventNameField;
+    public TextField eventNameTF;
     private EventCoordinatorViewController eventCoordinatorController;
     public void confirmCreateEventBtn(ActionEvent actionEvent) {
-        String name = eventNameField.getText();
+        String name = eventNameTF.getText();
 
         //update/add event properties on the EventCoordinator class
         eventCoordinatorController.updateEventProperties(name);
 
         //close the CreateEvent Window
-        ((Stage) eventNameField.getScene().getWindow()).close();
+        ((Stage) eventNameTF.getScene().getWindow()).close();
     }
 
     public void cancelCreateEventBtn(ActionEvent actionEvent) {
+        ((Stage) eventNameTF.getScene().getWindow()).close();
     }
-
-    public void dateNewEventBtn(ActionEvent actionEvent) {
-    }
-
-
-
 
 
     public void setEventCoordinatorController(EventCoordinatorViewController eventCoordinatorController) {
         this.eventCoordinatorController = eventCoordinatorController;
     }
+
+    public void startingDateEventBtn(ActionEvent actionEvent) {
+    }
+
+
+    public void endingDateEventBtn(ActionEvent actionEvent) {
+    }
+
+
 }
