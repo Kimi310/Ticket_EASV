@@ -5,6 +5,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.time.format.DateTimeFormatter;
+
 public class CreateEventViewController {
     public TextField eventNameTF, startingTimeTF, eventLocationTF, otherInfoTF, howToArriveTF;
     public DatePicker endingDateEventButton, startingDateEventButton;
@@ -12,10 +14,10 @@ public class CreateEventViewController {
     private EventCoordinatorViewController eventCoordinatorController;
     public void confirmCreateEventBtn(ActionEvent actionEvent) {
         String name = eventNameTF.getText();
-        String time = startingTimeTF.getText() + startingDateEventButton.toString();
+        String time = (startingTimeTF.getText() +" "+ startingDateEventButton.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         String location = eventLocationTF.getText();
         String notes = otherInfoTF.getText();
-        String endDate = endingDateEventButton.toString();
+        String endDate = endingDateEventButton.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         String locationGuidance = howToArriveTF.getText();
 
         //update/add event properties on the EventCoordinator class
