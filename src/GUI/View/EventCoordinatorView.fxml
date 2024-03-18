@@ -51,6 +51,11 @@
                                 <Font size="17.0" />
                             </font>
                         </Button>
+                  <Button mnemonicParsing="false" onAction="#editEvent" prefHeight="34.0" prefWidth="114.0" styleClass="coolBTN" text="Edit">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
                         <Button mnemonicParsing="false" onAction="#deleteEvent" prefHeight="34.0" prefWidth="114.0" styleClass="coolBTN" text="Delete">
                             <font>
                                 <Font size="17.0" />
