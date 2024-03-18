@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="createEventWindow" prefHeight="564.0" prefWidth="772.0" style="-fx-background-color: blue; -fx-border-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateEventViewController">
+<AnchorPane fx:id="createEventWindow" prefHeight="564.0" prefWidth="772.0" style="-fx-background-color: blue; -fx-border-color: black;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateEventViewController">
    <children>
       <Pane layoutX="37.0" layoutY="37.0" prefHeight="497.0" prefWidth="700.0" style="-fx-border-color: white;">
          <children>
@@ -30,7 +30,7 @@
                </font>
             </Label>
             <ChoiceBox fx:id="eventTypeButton" layoutX="159.0" layoutY="94.0" prefHeight="30.0" prefWidth="190.0" />
-            <DatePicker fx:id="startingDateEventButton" layoutX="517.0" layoutY="32.0" onAction="#startingDateEventBtn" prefHeight="30.0" prefWidth="148.0" />
+            <DatePicker fx:id="startingDateEventButton" layoutX="517.0" layoutY="32.0" prefHeight="30.0" prefWidth="148.0" />
             <Label layoutX="38.0" layoutY="99.0" text="EVENT TYPE" textFill="WHITE">
                <font>
                   <Font name="Corbel Light" size="18.0" />
@@ -41,8 +41,8 @@
                   <Font name="Corbel Light" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="nameNewEventButton" layoutX="159.0" layoutY="32.0" onAction="#nameNewEventBtn" prefHeight="30.0" prefWidth="190.0" />
-            <DatePicker fx:id="endingDateEventButton" layoutX="516.0" layoutY="94.0" onAction="#endingDateEventBtn" prefHeight="30.0" prefWidth="148.0" />
+            <TextField fx:id="eventNameTF" layoutX="159.0" layoutY="32.0" prefHeight="30.0" prefWidth="190.0" />
+            <DatePicker fx:id="endingDateEventButton" layoutX="516.0" layoutY="94.0" prefHeight="30.0" prefWidth="148.0" />
             <Label layoutX="373.0" layoutY="98.0" text="ENDING DATE" textFill="WHITE">
                <font>
                   <Font name="Corbel Light" size="18.0" />
@@ -53,31 +53,31 @@
                   <Font name="Corbel Light" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="eventLocationTextField" layoutX="158.0" layoutY="153.0" onAction="#eventLocationTF" prefHeight="30.0" prefWidth="190.0" />
+            <TextField fx:id="eventLocationTF" layoutX="158.0" layoutY="153.0" prefHeight="30.0" prefWidth="190.0" />
             <Label layoutX="373.0" layoutY="212.0" text="DURATION" textFill="WHITE">
                <font>
                   <Font name="Corbel Light" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="eventDurationTextField" layoutX="516.0" layoutY="209.0" onAction="#eventDurationTF" prefHeight="30.0" prefWidth="94.0" />
+            <TextField fx:id="eventDurationTF" layoutX="516.0" layoutY="209.0" prefHeight="30.0" prefWidth="94.0" />
             <Label layoutX="372.0" layoutY="157.0" text="STARTING TIME" textFill="WHITE">
                <font>
                   <Font name="Corbel Light" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="startingTimeTextField" layoutX="516.0" layoutY="153.0" onAction="#startingTimeTF" prefHeight="30.0" prefWidth="94.0" />
+            <TextField fx:id="startingTimeTF" layoutX="516.0" layoutY="153.0" prefHeight="30.0" prefWidth="94.0" />
             <Label layoutX="38.0" layoutY="212.0" text="HOW TO ARRIVE?" textFill="WHITE">
                <font>
                   <Font name="Corbel Light" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="howToArriveTextField" layoutX="38.0" layoutY="247.0" onAction="#howToArriveTF" prefHeight="62.0" prefWidth="311.0" />
+            <TextField fx:id="howToArriveTF" layoutX="38.0" layoutY="247.0" prefHeight="62.0" prefWidth="311.0" />
             <Label layoutX="38.0" layoutY="325.0" text="OTHER INFO" textFill="WHITE">
                <font>
                   <Font name="Corbel Light" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="otherInfoTextField" layoutX="38.0" layoutY="360.0" onAction="#otherInfoTF" prefHeight="95.0" prefWidth="311.0" />
+            <TextField fx:id="otherInfoTF" layoutX="38.0" layoutY="360.0" prefHeight="95.0" prefWidth="311.0" />
          </children>
       </Pane>
    </children>
