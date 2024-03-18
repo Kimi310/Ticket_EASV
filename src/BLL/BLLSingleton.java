@@ -13,14 +13,12 @@ public class BLLSingleton {
         return instance;
     }
 
-    public void addEvent(Event event){
+    public void addEventSingle(Event event){
         events.add(event);
-        // add event to db to be done
     }
 
-    public void deleteEvent(Event event){
+    public void deleteEventSingle(Event event){
         events.remove(event);
-        //remove event from db to be done
     }
 
     public ArrayList<Event> getEvents() {
