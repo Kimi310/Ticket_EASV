@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -87,15 +84,16 @@ public class EventCoordinatorViewController implements Initializable {
 
                 createEventController.setEventCoordinatorController(this);
 
-                // Set the fields in AddMovieWindowController with the selected movie properties
+
                 createEventController.eventNameTF.setText(selectedEvent.getName());
+                //dates are messed up, have to fix this so it retreives the dates as well, rn it only retrieves time
                 //createEventController.startingTimeTF.setText(selectedEvent.getTime());
                 createEventController.eventLocationTF.setText(selectedEvent.getLocation());
                 createEventController.otherInfoTF.setText(selectedEvent.getNotes());
                 createEventController.howToArriveTF.setText(selectedEvent.getLocationGuidance());
 
 
-                // Create a new stage for the AddMovieWindow
+
                 Stage stage = new Stage();
                 stage.setTitle("Edit event");
                 stage.setScene(new Scene(root));
@@ -106,7 +104,7 @@ public class EventCoordinatorViewController implements Initializable {
                 e.printStackTrace();
             }
         } else {
-            // Show an alert or message indicating that no Movie is selected
+            // Show an alert or message indicating that no Event is selected
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Event Selected");
             alert.setHeaderText(null);
@@ -118,11 +116,28 @@ public class EventCoordinatorViewController implements Initializable {
     @FXML
     private void deleteEvent(ActionEvent actionEvent) {
         if (eventTable.getSelectionModel().getSelectedItem()!=null){
-            eventService.deleteEvent(eventTable.getSelectionModel().getSelectedItem());
-            events.clear();
-            events.addAll(eventService.getEvents());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirm Deletion");
+            alert.setHeaderText("Are you sure you want to delete the selected event?");
+            alert.setContentText("This action cannot be undone.");
+            // Handle the users response
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    // User clicked OK, delete the event
+                    eventService.deleteEvent(eventTable.getSelectionModel().getSelectedItem());
+                    events.clear();
+                    events.addAll(eventService.getEvents());
+                }
+            });
+        } else {
+            // Show a message saying that no event is selected
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Event Selected");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select an event to delete.");
+            alert.showAndWait();
         }
-    }
+        }
 
     protected void updateEventProperties(String name, String time, String location, String notes, String endDate, String locationGuidance){
         //Check If the event already exist
