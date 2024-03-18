@@ -61,14 +61,14 @@
                         <Insets left="20.0" />
                     </HBox.margin>
                 </VBox>
-                <TableView prefHeight="549.0" prefWidth="1096.0">
+                <TableView fx:id="eventTable" prefHeight="549.0" prefWidth="1096.0">
                     <columns>
-                        <TableColumn prefWidth="253.6000121831894" text="Name" />
-                        <TableColumn prefWidth="132.00006103515625" text="Time" />
-                        <TableColumn prefWidth="177.59994506835938" text="Location" />
-                  <TableColumn prefWidth="204.7999267578125" text="Notes" />
-                  <TableColumn prefWidth="75.0" text="End date" />
-                  <TableColumn prefWidth="251.20001220703125" text="Location guidance" />
+                        <TableColumn fx:id="nameColumn" prefWidth="253.6000121831894" text="Name" />
+                        <TableColumn fx:id="timeColumn" prefWidth="132.00006103515625" text="Time" />
+                        <TableColumn fx:id="locationColumn" prefWidth="177.59994506835938" text="Location" />
+                  <TableColumn fx:id="notesColumn" prefWidth="204.7999267578125" text="Notes" />
+                  <TableColumn fx:id="endDateColumn" prefWidth="75.0" text="End date" />
+                  <TableColumn fx:id="locationGuidanceColumn" prefWidth="251.20001220703125" text="Location guidance" />
                     </columns>
                 </TableView>
             </children>
