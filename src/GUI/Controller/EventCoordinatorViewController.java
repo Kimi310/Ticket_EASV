@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -75,6 +76,43 @@ public class EventCoordinatorViewController implements Initializable {
     }
 
     public void editEvent(ActionEvent actionEvent) {
+        Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
+        if (selectedEvent != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/CreateEventWindow.fxml"));
+            Parent root;
+            try {
+                root = loader.load();
+
+                CreateEventViewController createEventController = loader.getController();
+
+                createEventController.setEventCoordinatorController(this);
+
+                // Set the fields in AddMovieWindowController with the selected movie properties
+                createEventController.eventNameTF.setText(selectedEvent.getName());
+                //createEventController.startingTimeTF.setText(selectedEvent.getTime());
+                createEventController.eventLocationTF.setText(selectedEvent.getLocation());
+                createEventController.otherInfoTF.setText(selectedEvent.getNotes());
+                createEventController.howToArriveTF.setText(selectedEvent.getLocationGuidance());
+
+
+                // Create a new stage for the AddMovieWindow
+                Stage stage = new Stage();
+                stage.setTitle("Edit event");
+                stage.setScene(new Scene(root));
+                createEventController.setStage(stage);
+                stage.show();
+                createEventController.confirmCreateEventButton.setText("Save Changes");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // Show an alert or message indicating that no Movie is selected
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Event Selected");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select an Event to edit.");
+            alert.showAndWait();
+        }
     }
 
     @FXML
