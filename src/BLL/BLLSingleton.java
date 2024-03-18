@@ -1,5 +1,7 @@
 package BLL;
 
+import java.util.ArrayList;
+
 public class BLLSingleton {
     // Single instance of GUISingleton
     private static final BLLSingleton instance = new BLLSingleton();
