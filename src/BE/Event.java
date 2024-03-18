@@ -20,8 +20,13 @@ public class Event {
     }
 
     //test event addition, will delete later
-    public Event(String name){
+    public Event(String name, String time, String location, String notes, String endDate, String locationGuidance){
         this.name = name;
+        this.time = time;
+        this.location = location;
+        this.notes = notes;
+        this.endDate = endDate;
+        this.locationGuidance = locationGuidance;
     }
 
     public int getId() {

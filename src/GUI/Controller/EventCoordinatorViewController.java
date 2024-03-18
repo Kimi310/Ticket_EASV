@@ -86,7 +86,7 @@ public class EventCoordinatorViewController implements Initializable {
         }
     }
 
-    protected void updateEventProperties(String name){
+    protected void updateEventProperties(String name, String time, String location, String notes, String endDate, String locationGuidance){
         //Check If the event already exist
         boolean eventExists = false;
         Event existingEvent = null;
@@ -96,6 +96,11 @@ public class EventCoordinatorViewController implements Initializable {
             if (event.getName().equals(name)){
                 existingEvent = event;
                 existingEvent.setName(name);
+                existingEvent.setTime(time);
+                existingEvent.setLocation(location);
+                existingEvent.setNotes(notes);
+                existingEvent.setEndDate(endDate);
+                existingEvent.setLocationGuidance(locationGuidance);
                 //implement db update of event
 
                 eventExists = true;
@@ -105,7 +110,7 @@ public class EventCoordinatorViewController implements Initializable {
 
         //If the event doesnt exist, add a new one
         if (!eventExists){
-            Event newEvent = new Event(name);
+            Event newEvent = new Event(name, time, location, notes, endDate, locationGuidance);
             //implement db addition of event
 
             eventTable.getItems().add(newEvent);
