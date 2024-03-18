@@ -63,7 +63,7 @@ public class EventCoordinatorViewController implements Initializable {
         Parent root;
         try {
             root = loader.load();
-            CreateEventButtonController addEventController = loader.getController();
+            CreateEventViewController addEventController = loader.getController();
             addEventController.setEventCoordinatorController(this);
             Stage stage = new Stage();
             stage.setTitle("Add Event");
