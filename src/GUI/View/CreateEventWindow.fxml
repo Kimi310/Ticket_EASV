@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="createEventWindow" prefHeight="337.0" prefWidth="462.0" style="-fx-background-color: blue; -fx-border-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateEventViewController">
+<AnchorPane fx:id="createEventWindow" prefHeight="337.0" prefWidth="462.0" style="-fx-background-color: blue; -fx-border-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateEventButtonController">
    <children>
       <Pane layoutX="37.0" layoutY="37.0" prefHeight="263.0" prefWidth="388.0" style="-fx-border-color: white;">
          <children>
@@ -19,9 +19,9 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button id="cancelCreateEventButton" fx:id="cancelCreateEventButton" layoutX="235.0" layoutY="202.0" mnemonicParsing="false" onAction="#cancelCreateEventBtn" prefHeight="30.0" prefWidth="88.0" text="Cancel" textAlignment="CENTER" textFill="#bc0000">
+            <Button id="cancelCreateEventButton" fx:id="cancelCreateEventButton" layoutX="234.0" layoutY="202.0" mnemonicParsing="false" onAction="#cancelCreateEventBtn" prefHeight="30.0" prefWidth="88.0" text="Cancel" textAlignment="CENTER" textFill="#bc0000">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="14.0" />
                </font>
             </Button>
          </children>
@@ -32,7 +32,7 @@
          </font>
       </Label>
       <ChoiceBox fx:id="typeNewEventButton" layoutX="161.0" layoutY="171.0" prefHeight="30.0" prefWidth="198.0" />
-      <DatePicker fx:id="dateNewEventButton" layoutX="161.0" layoutY="117.0" onAction="#dateNewEventBtn" prefHeight="30.0" prefWidth="198.0" />
+      <DatePicker fx:id="dateNewEventButton" layoutX="162.0" layoutY="117.0" onAction="#dateNewEventBtn" prefHeight="30.0" prefWidth="198.0" />
       <Label layoutX="74.0" layoutY="176.0" text="TYPE" textFill="WHITE">
          <font>
             <Font name="Corbel Light" size="18.0" />
