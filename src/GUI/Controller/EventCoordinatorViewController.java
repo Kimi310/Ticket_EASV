@@ -32,7 +32,7 @@ public class EventCoordinatorViewController implements Initializable {
     @FXML
     private TableView<Event> eventTable;
     private ObservableList<Event> events= FXCollections.observableArrayList();
-    private EventService eventService = new EventService();
+    private final EventService eventService = new EventService();
 
     private void eventTableProperties(){
         eventTable.setEditable(true);
@@ -58,6 +58,11 @@ public class EventCoordinatorViewController implements Initializable {
 
     @FXML
     private void deleteEvent(ActionEvent actionEvent) {
+        if (eventTable.getSelectionModel().getSelectedItem()!=null){
+            eventService.deleteEvent(eventTable.getSelectionModel().getSelectedItem());
+            events.clear();
+            events.addAll(eventService.getEvents());
+        }
     }
 
     @Override

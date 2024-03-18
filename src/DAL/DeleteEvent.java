@@ -13,8 +13,8 @@ public class DeleteEvent {
     public boolean deleteEvent(Event event) {
         try(Connection con = cm.getConnection())
         {
-            String sql = "DELETE FROM Events WHERE id = ?";
-            PreparedStatement pt = con.prepareStatement(sql);
+            String sql = "DELETE FROM Events WHERE EventsID = ?";
+            PreparedStatement pt = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             pt.setInt(1, event.getId());
             pt.executeQuery();
 

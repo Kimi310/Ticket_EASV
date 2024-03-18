@@ -15,8 +15,10 @@ public class EventService {
     }
 
     public void deleteEvent(Event event){
-        single.deleteEventSingle(event);
-        deleteEvent.deleteEvent(event);
+        if(deleteEvent.deleteEvent(event)){
+            System.out.println("test");
+            single.deleteEventSingle(event);
+        }
     }
 
     public ArrayList<Event> getEvents (){
