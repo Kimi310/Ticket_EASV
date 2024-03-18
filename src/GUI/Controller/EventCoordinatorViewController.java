@@ -43,11 +43,14 @@ public class EventCoordinatorViewController implements Initializable {
         endDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
         locationGuidanceColumn.setCellValueFactory(new PropertyValueFactory<>("locationGuidance"));
         eventTable.setItems(events);
+
     }
 
     private void poluteEvents(){
         ArrayList<Event> placeholder = eventService.getEvents();
-        events.addAll(placeholder);
+        if (!placeholder.isEmpty()){
+            events.addAll(placeholder);
+        }
     }
     @FXML
     private void addEvent(ActionEvent actionEvent) {
