@@ -164,9 +164,9 @@ public class EventCoordinatorViewController implements Initializable {
         //If the event doesnt exist, add a new one
         if (!eventExists){
             Event newEvent = new Event(name, time, location, notes, endDate, locationGuidance);
-            //implement db addition of event
-
-            eventTable.getItems().add(newEvent);
+            eventService.addEvent(newEvent);
+            events.clear();
+            events.addAll(eventService.getEvents());
         }
     }
 
