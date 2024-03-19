@@ -23,4 +23,11 @@
 }
 .middleSection{
     -fx-background-color: #000755;
+
+}
+
+.ticketBG {
+    -fx-background-image: url("../../normalT.jpg");
+    -fx-background-repeat: none;
+    -fx-background-position: center;
 }
