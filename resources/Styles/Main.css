@@ -27,7 +27,22 @@
 }
 
 .ticketBG {
-    -fx-background-image: url("../../normalT.jpg");
+    -fx-background-image: url("../Images/normalT.jpg");
     -fx-background-repeat: none;
     -fx-background-position: center;
+}
+
+.Logo {
+    -fx-background-image: url("../Images/bas.jpg");
+    -fx-background-repeat: none;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+
+.UserImage {
+    -fx-background-image: url("../Images/deafult-user.jpg");
+    -fx-background-repeat: none;
+    -fx-background-position: center;
+    -fx-background-size: contain;
 }
