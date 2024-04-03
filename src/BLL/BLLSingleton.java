@@ -16,9 +16,9 @@ public class BLLSingleton {
         return instance;
     }
 
-//    public BLLSingleton(){
-//        events = getEvents.getEventList();
-//    }
+    public BLLSingleton(){
+       events = getEvents.getEventList();
+    }
 
     public void addEventSingle(Event event){
         events.add(event);
