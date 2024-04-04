@@ -2,7 +2,9 @@ package GUI.Controller;
 
 import BE.Event;
 import BE.User;
+import BLL.UserEventService;
 import BLL.UserService;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +24,8 @@ public class UsersForEventViewController implements Initializable {
     public TableColumn<User,String> userNameColumn;
     public TableColumn<User,String> emailColumn;
     private ObservableList<User> users = FXCollections.observableArrayList();
-    private final UserService userService = new UserService();
+    private final UserEventService userEventService = new UserEventService();
+    private Event event;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,10 +51,14 @@ public class UsersForEventViewController implements Initializable {
     }
 
     private void poluteUsers(){
-        ArrayList<User> placeholder = userService.getUsers();
+        ArrayList<User> placeholder = userEventService.getUsersForEvent(event);
         if (!placeholder.isEmpty()){
             users.addAll(placeholder);
         }
+    }
+
+    public void setEvent(Event e){
+        event = e;
     }
 
     public void editUser(ActionEvent actionEvent) {

@@ -194,6 +194,8 @@ public class EventCoordinatorViewController implements Initializable {
         Stage primaryStage = (Stage) eventTable.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/UsersForEventView.fxml"));
         Parent root = loader.load();
+        UsersForEventViewController controller = loader.getController();
+        controller.setEvent(event);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
