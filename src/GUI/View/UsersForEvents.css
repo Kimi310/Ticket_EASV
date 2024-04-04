@@ -1,0 +1,48 @@
+.noBorder {
+
+    -fx-border-image-width: 0;
+}
+.coolBTN {
+    -fx-background-color: #3456f5;
+    -fx-padding: 4px;
+
+    /* Top, Right, Bottom, Left */
+    -fx-text-fill: #f2f6f9;
+    -fx-border-width: 0 0 0 0px;
+    -fx-border-style: solid;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+.topSection{
+    -fx-background-color: #3456f5;
+}
+
+.deafultText{
+    -fx-font-size: 50px;
+    -fx-text-fill: #3456f5;
+}
+.middleSection{
+    -fx-background-color: #000755;
+
+}
+
+.ticketBG {
+    -fx-background-image: url("../Images/normalT.jpg");
+    -fx-background-repeat: none;
+    -fx-background-position: center;
+}
+
+.Logo {
+    -fx-background-image: url("../Images/bas.jpg");
+    -fx-background-repeat: none;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
+
+
+.UserImage {
+    -fx-background-image: url("../Images/deafult-user.jpg");
+    -fx-background-repeat: none;
+    -fx-background-position: center;
+    -fx-background-size: contain;
+}
