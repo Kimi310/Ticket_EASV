@@ -177,4 +177,30 @@ public class EventCoordinatorViewController implements Initializable {
     }
 
 
+    public void openTicketGenerator(ActionEvent actionEvent) {
+        Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
+        if (selectedEvent != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GenerateTicketView.fxml"));
+            Parent root;
+            try {
+                root = loader.load();
+                GenerateTicketController ticketController = loader.getController();
+                ticketController.setEventCoordinatorController(this);
+                Stage stage = new Stage();
+                stage.setTitle("Generate Ticket(s)");
+                stage.setScene(new Scene(root));
+                ticketController.setStage(stage);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // Show an alert or message indicating that no Event is selected
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Event Selected");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select an Event to generate a Ticket(s).");
+            alert.showAndWait();
+        }
+    }
 }
