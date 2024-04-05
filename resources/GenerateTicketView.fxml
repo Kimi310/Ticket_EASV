@@ -20,7 +20,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <TextField alignment="CENTER" prefHeight="31.0" prefWidth="48.0" />
+                  <TextField fx:id="amountField" alignment="CENTER" prefHeight="31.0" prefWidth="48.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
@@ -40,7 +40,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <TextField alignment="CENTER" prefHeight="41.0" prefWidth="244.0" />
+                  <TextField fx:id="nameField" alignment="CENTER" prefHeight="41.0" prefWidth="244.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
@@ -50,7 +50,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <TextField alignment="CENTER" prefHeight="41.0" prefWidth="245.0" />
+                  <TextField fx:id="emailField" alignment="CENTER" prefHeight="41.0" prefWidth="245.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">

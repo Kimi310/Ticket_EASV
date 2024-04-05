@@ -79,11 +79,8 @@ public class EventCoordinatorViewController implements Initializable {
             Parent root;
             try {
                 root = loader.load();
-
                 CreateEventViewController createEventController = loader.getController();
-
                 createEventController.setEventCoordinatorController(this);
-
 
                 createEventController.eventNameTF.setText(selectedEvent.getName());
                 //dates are messed up, have to fix this so it retreives the dates as well, rn it only retrieves time
@@ -91,8 +88,6 @@ public class EventCoordinatorViewController implements Initializable {
                 createEventController.eventLocationTF.setText(selectedEvent.getLocation());
                 createEventController.otherInfoTF.setText(selectedEvent.getNotes());
                 createEventController.howToArriveTF.setText(selectedEvent.getLocationGuidance());
-
-
 
                 Stage stage = new Stage();
                 stage.setTitle("Edit event");
