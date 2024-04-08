@@ -17,7 +17,7 @@ public class GenerateTicketController {
     private EventCoordinatorViewController eventCoordinatorViewController;
     private Stage stage;
     private TicketNController  ticketNController;
-    private String eventTime, eventLocation;
+    private String eventTime, eventLocation, eventName;
 
     public void setEventCoordinatorController(EventCoordinatorViewController eventCoordinatorViewController) {
         this.eventCoordinatorViewController = eventCoordinatorViewController;
@@ -56,7 +56,7 @@ public class GenerateTicketController {
                 ticketNController.setStage(stage);
                 stage.show();
 
-                ticketNController.setNewTicket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation);
+                ticketNController.setNewTicket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -77,9 +77,10 @@ public class GenerateTicketController {
         return sb.toString();
     }
 
-    public void setEventProperties(String time, String location) {
+    public void setEventProperties(String time, String location, String name) {
         this.eventTime = time;
         this.eventLocation = location;
+        this.eventName = name;
     }
 
     private boolean isValidNumber(String str) {
