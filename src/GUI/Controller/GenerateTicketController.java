@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,9 +28,18 @@ public class GenerateTicketController {
     }
 
     public void generateTicket(ActionEvent actionEvent) {
+        if (!isValidNumber(amountField.getText())||!isValidNumber(priceField.getText())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Amount of tickets and/or price must be numbers");
+            alert.showAndWait();
+            return;
+        }
+
         int amount = Integer.parseInt(amountField.getText());
         for (int i = 0; i < amount; i++) {
-            String ticketName = nameField.getText() + "_" + (i+1); // it will say "ticket name" +1 and so on, not really sure how to make tickets have multiple names or emails when multiple are generated at the same time
+            String ticketName = nameField.getText() + "_" + (i+1); // it will say "ticket name" +1 and so on, not really sure how to make tickets have multiple names
             String ticketEmail = emailField.getText();
             String ticketPrice = priceField.getText();
             String serialNumber = generateSerialNumber();
@@ -56,7 +66,6 @@ public class GenerateTicketController {
         ((Stage) nameField.getScene().getWindow()).close();
     }
 
-
     private String generateSerialNumber() {
         SecureRandom random = new SecureRandom();
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -73,5 +82,13 @@ public class GenerateTicketController {
         this.eventLocation = location;
     }
 
+    private boolean isValidNumber(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
 }

@@ -99,7 +99,6 @@ public class EventCoordinatorViewController implements Initializable {
                 e.printStackTrace();
             }
         } else {
-            // Show an alert or message indicating that no Event is selected
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Event Selected");
             alert.setHeaderText(null);
@@ -115,17 +114,14 @@ public class EventCoordinatorViewController implements Initializable {
             alert.setTitle("Confirm Deletion");
             alert.setHeaderText("Are you sure you want to delete the selected event?");
             alert.setContentText("This action cannot be undone.");
-            // Handle the users response
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    // User clicked OK, delete the event
                     eventService.deleteEvent(eventTable.getSelectionModel().getSelectedItem());
                     events.clear();
                     events.addAll(eventService.getEvents());
                 }
             });
         } else {
-            // Show a message saying that no event is selected
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Event Selected");
             alert.setHeaderText(null);
@@ -191,7 +187,6 @@ public class EventCoordinatorViewController implements Initializable {
                 e.printStackTrace();
             }
         } else {
-            // Show an alert or message indicating that no Event is selected
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Event Selected");
             alert.setHeaderText(null);
