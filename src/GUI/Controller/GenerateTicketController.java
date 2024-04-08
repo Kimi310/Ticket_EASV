@@ -27,33 +27,35 @@ public class GenerateTicketController {
     }
 
     public void generateTicket(ActionEvent actionEvent) {
-        String ticketName = nameField.getText();
-        String ticketEmail = emailField.getText();
-        String ticketPrice = priceField.getText();
-        String serialNumber = generateSerialNumber();
+        int amount = Integer.parseInt(amountField.getText());
+        for (int i = 0; i < amount; i++) {
+            String ticketName = nameField.getText() + "_" + (i+1); // it will say "ticket name" +1 and so on, not really sure how to make tickets have multiple names or emails when multiple are generated at the same time
+            String ticketEmail = emailField.getText();
+            String ticketPrice = priceField.getText();
+            String serialNumber = generateSerialNumber();
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TicketN.fxml"));
+            Parent root;
+            try {
+                root = loader.load();
+                TicketNController ticketNController = loader.getController();
+                ticketNController.setGenerateTicketController(this);
+                Stage stage = new Stage();
+                stage.setTitle("New Ticket:");
+                stage.setScene(new Scene(root));
+                ticketNController.setStage(stage);
+                stage.show();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/TicketN.fxml"));
-        Parent root;
-        try {
-            root = loader.load();
-            TicketNController ticketNController = loader.getController();
-            ticketNController.setGenerateTicketController(this);
-            Stage stage = new Stage();
-            stage.setTitle("New Ticket:");
-            stage.setScene(new Scene(root));
-            ticketNController.setStage(stage);
-            stage.show();
+                ticketNController.setNewTicket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation);
 
-            ticketNController.setNewTicket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         ((Stage) nameField.getScene().getWindow()).close();
-
     }
+
 
     private String generateSerialNumber() {
         SecureRandom random = new SecureRandom();

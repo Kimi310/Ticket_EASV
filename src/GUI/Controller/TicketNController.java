@@ -13,7 +13,7 @@ public class TicketNController {
     private GenerateTicketController generateTicketController;
 
     protected void setNewTicket(String ticketName, String ticketEmail, String ticketPrice, String serialNumber, String eventTime, String eventLocation){
-        Ticket newTicket = new Ticket(ticketName, ticketEmail);
+        Ticket newTicket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber);
 
         //add ticket to database?
 

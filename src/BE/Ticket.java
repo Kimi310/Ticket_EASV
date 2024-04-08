@@ -2,13 +2,17 @@ package BE;
 
 public class Ticket {
 
-    private int serialNumber;
+    private String serialNumber;
     private String ticketName;
     private String ticketEmail;
+    private String ticketPrice;
 
-    public Ticket(String ticketName, String ticketEmail){
+
+    public Ticket(String ticketName, String ticketEmail, String ticketPrice, String serialNumber) {
         this.ticketName = ticketName;
         this.ticketEmail = ticketEmail;
+        this.ticketPrice = ticketPrice;
+        this.serialNumber = serialNumber;
     }
 
 
@@ -26,5 +30,13 @@ public class Ticket {
 
     public void setTicketEmail(String ticketEmail) {
         this.ticketEmail = ticketEmail;
+    }
+
+    public String getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(String ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 }
