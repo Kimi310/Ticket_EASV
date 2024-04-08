@@ -6,18 +6,20 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class TicketNController {
-    public Label ticketNamelabel;
-    public Label ticketEmailLabel;
+    public Label ticketNamelabel, ticketEmailLabel, serialNumberLabel, ticketPriceLabel, ticketLocationLabel, ticketTimeLabel;
 
     private Stage stage;
 
     private GenerateTicketController generateTicketController;
 
-    protected void setNewTicket(String ticketName, String ticketEmail){
+    protected void setNewTicket(String ticketName, String ticketEmail, String ticketPrice, String serialNumber){
         Ticket newTicket = new Ticket(ticketName, ticketEmail);
+        //add ticket to database?
 
         ticketNamelabel.setText(ticketName);
         ticketEmailLabel.setText(ticketEmail);
+        ticketPriceLabel.setText(ticketPrice);
+        serialNumberLabel.setText(serialNumber);
 
     }
 
