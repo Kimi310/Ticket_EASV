@@ -181,6 +181,7 @@ public class EventCoordinatorViewController implements Initializable {
                 root = loader.load();
                 GenerateTicketController ticketController = loader.getController();
                 ticketController.setEventCoordinatorController(this);
+                ticketController.setEventProperties(selectedEvent.getTime(), selectedEvent.getLocation());
                 Stage stage = new Stage();
                 stage.setTitle("Generate Ticket(s)");
                 stage.setScene(new Scene(root));

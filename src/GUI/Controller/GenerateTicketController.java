@@ -16,6 +16,7 @@ public class GenerateTicketController {
     private EventCoordinatorViewController eventCoordinatorViewController;
     private Stage stage;
     private TicketNController  ticketNController;
+    private String eventTime, eventLocation;
 
     public void setEventCoordinatorController(EventCoordinatorViewController eventCoordinatorViewController) {
         this.eventCoordinatorViewController = eventCoordinatorViewController;
@@ -31,6 +32,7 @@ public class GenerateTicketController {
         String ticketPrice = priceField.getText();
         String serialNumber = generateSerialNumber();
 
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/TicketN.fxml"));
         Parent root;
         try {
@@ -43,7 +45,7 @@ public class GenerateTicketController {
             ticketNController.setStage(stage);
             stage.show();
 
-            ticketNController.setNewTicket(ticketName, ticketEmail, ticketPrice, serialNumber);
+            ticketNController.setNewTicket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,6 +64,11 @@ public class GenerateTicketController {
             sb.append(randomChar);
         }
         return sb.toString();
+    }
+
+    public void setEventProperties(String time, String location) {
+        this.eventTime = time;
+        this.eventLocation = location;
     }
 
 

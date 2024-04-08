@@ -12,14 +12,17 @@ public class TicketNController {
 
     private GenerateTicketController generateTicketController;
 
-    protected void setNewTicket(String ticketName, String ticketEmail, String ticketPrice, String serialNumber){
+    protected void setNewTicket(String ticketName, String ticketEmail, String ticketPrice, String serialNumber, String eventTime, String eventLocation){
         Ticket newTicket = new Ticket(ticketName, ticketEmail);
+
         //add ticket to database?
 
         ticketNamelabel.setText(ticketName);
         ticketEmailLabel.setText(ticketEmail);
         ticketPriceLabel.setText(ticketPrice);
         serialNumberLabel.setText(serialNumber);
+        ticketTimeLabel.setText(eventTime);
+        ticketLocationLabel.setText(eventLocation);
 
     }
 
