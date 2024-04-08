@@ -15,6 +15,7 @@ public class TicketNController {
     public Label ticketNamelabel, ticketEmailLabel, serialNumberLabel, ticketPriceLabel, ticketLocationLabel, ticketTimeLabel, ticketEventNameLabel;
     public AnchorPane ticketPane;
     public Button printBtn;
+    public Label seatLabel;
 
     private Stage stage;
 
@@ -54,5 +55,9 @@ public class TicketNController {
                 printerJob.endJob();
             }
         }
+    }
+
+    public void setSeat(String seat) {
+        seatLabel.setText(seat); // Update the seat label with the selected seat
     }
 }

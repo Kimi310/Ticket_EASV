@@ -22,7 +22,7 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <Button fx:id="printBtn" layoutX="1292.0" layoutY="406.0" mnemonicParsing="false" onAction="#printTicket" prefHeight="67.0" prefWidth="78.0" text="Print">
+      <Button fx:id="printBtn" layoutX="466.0" layoutY="212.0" mnemonicParsing="false" onAction="#printTicket" prefHeight="67.0" prefWidth="78.0" text="Print">
          <font>
             <Font size="22.0" />
          </font>
@@ -47,5 +47,9 @@
             <Font size="56.0" />
          </font>
       </Label>
+      <Label fx:id="seatLabel" layoutX="1245.0" layoutY="439.0" prefHeight="58.0" prefWidth="172.0" text="Seat">
+         <font>
+            <Font size="40.0" />
+         </font></Label>
    </children>
 </AnchorPane>

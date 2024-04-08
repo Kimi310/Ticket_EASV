@@ -9,6 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <AnchorPane prefHeight="494.0" prefWidth="340.0" style="-fx-background-color: blue; -fx-border-color: black;" stylesheets="@Styles/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.GenerateTicketController">
    <children>
       <VBox layoutX="2.0" layoutY="3.0" prefHeight="516.0" prefWidth="340.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -30,7 +32,14 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <ChoiceBox prefHeight="31.0" prefWidth="130.0" />
+                  <ChoiceBox fx:id="ticketTypeChoiceBox" layoutX="14.0" layoutY="165.0">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Seated Event" />
+                           <String fx:value="Standing Event" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
