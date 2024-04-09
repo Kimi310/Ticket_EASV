@@ -11,10 +11,6 @@ public class TicketNController {
     public Label seatLabel;
 
     protected void setNewTicket(String ticketName, String ticketEmail, String ticketPrice, String serialNumber, String eventTime, String eventLocation, String eventName){
-        Ticket newTicket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber);
-
-        //add ticket to database?
-
         ticketNamelabel.setText(ticketName);
         ticketEmailLabel.setText(ticketEmail);
         ticketPriceLabel.setText(ticketPrice);

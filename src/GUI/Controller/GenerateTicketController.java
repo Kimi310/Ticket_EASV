@@ -1,5 +1,6 @@
 package GUI.Controller;
 
+import BE.Ticket;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +12,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenerateTicketController {
 
@@ -107,38 +110,27 @@ public class GenerateTicketController {
 
     private void generateStandingTickets() {
         int amount = Integer.parseInt(amountField.getText());
+        List<Ticket> tickets = new ArrayList<>();
+
         for (int i = 0; i < amount; i++) {
             String ticketName = nameField.getText() + "_" + (i + 1);
             String ticketEmail = emailField.getText();
             String ticketPrice = priceField.getText();
             String serialNumber = generateSerialNumber();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TicketPrintView.fxml"));
-            Parent root;
-            try {
-                root = loader.load();
-                TicketPrintViewController ticketPrintController = loader.getController();
-                ticketPrintController.setTicketPropertiesStanding(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName);
-                ticketPrintController.setGenerateTicketController(this);
-                Stage stage = new Stage();
-                stage.setTitle("Print Ticket:");
-                stage.setScene(new Scene(root));
-                ticketPrintController.setStage(stage);
-                stage.show();
-
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName, null); // No seat for standing tickets
+            tickets.add(ticket);
+            // Add ticket to database?
         }
 
+        openTicketPrintView(tickets);
         ((Stage) nameField.getScene().getWindow()).close();
     }
 
     private void generateSeatedTickets(String selectedSeats) {
         String[] seatsArray = selectedSeats.split(", ");
         int amount = Math.min(seatsArray.length, Integer.parseInt(amountField.getText()));
+        List<Ticket> tickets = new ArrayList<>();
 
         for (int i = 0; i < amount; i++) {
             String ticketName = nameField.getText() + "_" + (i + 1);
@@ -146,25 +138,30 @@ public class GenerateTicketController {
             String ticketPrice = priceField.getText();
             String serialNumber = generateSerialNumber();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/TicketPrintView.fxml"));
-            Parent root;
-            try {
-                root = loader.load();
-                TicketPrintViewController ticketPrintController = loader.getController();
-                ticketPrintController.setTicketPropertiesSeated(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName, seatsArray[i]);
-                ticketPrintController.setGenerateTicketController(this);
-                Stage stage = new Stage();
-                stage.setTitle("Print Ticket:");
-                stage.setScene(new Scene(root));
-                ticketPrintController.setStage(stage);
-                stage.show();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName, seatsArray[i]); // Assign selected seat
+            tickets.add(ticket);
+            // Add ticket to database?
         }
 
+        openTicketPrintView(tickets);
         ((Stage) nameField.getScene().getWindow()).close();
+    }
+
+    private void openTicketPrintView(List<Ticket> tickets) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/TicketPrintView.fxml"));
+        try {
+            Parent root = loader.load();
+            TicketPrintViewController ticketPrintController = loader.getController();
+            ticketPrintController.setTickets(tickets);
+
+            Stage stage = new Stage();
+            stage.setTitle("Print Ticket:");
+            stage.setScene(new Scene(root));
+            ticketPrintController.setStage(stage);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
