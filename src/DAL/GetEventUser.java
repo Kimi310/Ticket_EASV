@@ -25,10 +25,9 @@ public class GetEventUser {
                 int userID         = rs.getInt("UserID");
                 int eventID         = rs.getInt("EventID");
 
-                UserEvent userEvent = new UserEvent(id,userID,eventID);
+                UserEvent userEvent = new UserEvent(userID,eventID,id);
                 usersList.add(userEvent);
             }
-            System.out.println(usersList);
             return usersList;
 
         } catch (SQLException e) {

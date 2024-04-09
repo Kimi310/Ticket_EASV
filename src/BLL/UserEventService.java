@@ -17,7 +17,6 @@ public class UserEventService {
     public ArrayList<User> getUsersForEvent(Event event){
         ArrayList<User> placeholder = new ArrayList<>();
         for (UserEvent ue: userEvents) {
-            System.out.println(ue);
             if (ue.getEventID()==event.getId()){
                 for (User u:users) {
                     if (u.getId()==ue.getUserID()){

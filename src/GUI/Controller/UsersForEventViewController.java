@@ -29,11 +29,10 @@ public class UsersForEventViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        poluteUsers();
-        initializeTableView();
+
     }
 
-    private void initializeTableView(){
+    public void initializeTableView(){
         usersTable.setEditable(true);
         userNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -50,7 +49,7 @@ public class UsersForEventViewController implements Initializable {
         });
     }
 
-    private void poluteUsers(){
+    public void poluteUsers(){
         ArrayList<User> placeholder = userEventService.getUsersForEvent(event);
         if (!placeholder.isEmpty()){
             users.addAll(placeholder);

@@ -196,6 +196,8 @@ public class EventCoordinatorViewController implements Initializable {
         Parent root = loader.load();
         UsersForEventViewController controller = loader.getController();
         controller.setEvent(event);
+        controller.poluteUsers();
+        controller.initializeTableView();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
