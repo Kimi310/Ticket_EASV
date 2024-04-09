@@ -1,7 +1,9 @@
 package GUI.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.print.PrinterJob;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -40,5 +42,15 @@ public class TicketPrintViewController {
             e.printStackTrace();
         }
 
+    }
+
+    public void printTicket(ActionEvent actionEvent) {
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null && job.showPrintDialog(stage.getOwner())) {
+            boolean success = job.printPage(ticketNHbox);
+            if (success) {
+                job.endJob();
+            }
+        }
     }
 }

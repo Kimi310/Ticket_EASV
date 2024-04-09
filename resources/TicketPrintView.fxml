@@ -12,7 +12,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="200.0" prefWidth="1920.0" styleClass="middleSection">
                <children>
-                  <Button mnemonicParsing="false" styleClass="coolBTN" text="Print" textAlignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#printTicket" styleClass="coolBTN" text="Print" textAlignment="CENTER">
                      <font>
                         <Font size="34.0" />
                      </font>
