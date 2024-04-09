@@ -2,27 +2,44 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="820.0" prefWidth="1920.0" stylesheets="@Styles/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketPrintViewController">
+<FlowPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketPrintViewController">
    <children>
-      <VBox prefHeight="720.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane styleClass="middleSection" stylesheets="@Styles/Main.css">
          <children>
-            <HBox alignment="CENTER" prefHeight="200.0" prefWidth="1920.0" styleClass="middleSection">
+            <VBox prefHeight="720.0" prefWidth="1920.0" styleClass="middleSection" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#printTicket" styleClass="coolBTN" text="Print" textAlignment="CENTER">
-                     <font>
-                        <Font size="34.0" />
-                     </font>
-                  </Button>
-               </children></HBox>
-            <HBox fx:id="ticketNHbox" prefHeight="620.0" prefWidth="1920.0">
-               <children>
+                  <HBox alignment="CENTER" prefHeight="200.0" prefWidth="1920.0" spacing="20.0" styleClass="middleSection">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#goToPreviousTicket" styleClass="coolBTN" text="Previous" textAlignment="CENTER">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#printCurrentTicket" styleClass="coolBTN" text="Print" textAlignment="CENTER">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#goToNextTicket" styleClass="coolBTN" text="Next" textAlignment="CENTER">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="ticketNHbox" prefHeight="620.0" prefWidth="1920.0" styleClass="middleSection">
+                     <children>
                    
-               </children></HBox>
+               </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</FlowPane>

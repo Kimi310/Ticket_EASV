@@ -21,6 +21,6 @@ public class TicketNController {
     }
 
     public void setSeat(String seat) {
-        seatLabel.setText(seat); // Update the seat label with the selected seat
+        seatLabel.setText(seat);
     }
 }

@@ -14,23 +14,26 @@ import java.util.List;
 public class TicketPrintViewController {
     @FXML
     public HBox ticketNHbox;
-    private GenerateTicketController generateTicketController;
     private Stage stage;
     private TicketNController ticketNController;
+    private List<Ticket> tickets;
+    private int currentIndex = 0;
 
-    public void setGenerateTicketController(GenerateTicketController generateTicketController) {
-        this.generateTicketController = generateTicketController;
-    }
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
     public void setTickets(List<Ticket> tickets) {
-        ticketNHbox.getChildren().clear(); // Clear existing tickets
-        for (Ticket ticket : tickets) {
-            addTicketToPrint(ticket);
+        this.tickets = tickets;
+        if (!tickets.isEmpty()) {
+            displayTicket(0);
         }
+    }
+
+    private void displayTicket(int index) {
+        ticketNHbox.getChildren().clear();
+        addTicketToPrint(tickets.get(index));
     }
 
     private void addTicketToPrint(Ticket ticket) {
@@ -49,13 +52,29 @@ public class TicketPrintViewController {
         }
     }
 
-    public void printTicket(ActionEvent actionEvent) {
-        PrinterJob job = PrinterJob.createPrinterJob();
-        if (job != null && job.showPrintDialog(stage.getOwner())) {
-            boolean success = job.printPage(ticketNHbox);
-            if (success) {
-                job.endJob();
+    public void printCurrentTicket(ActionEvent actionEvent) {
+        if (!tickets.isEmpty()) {
+            PrinterJob job = PrinterJob.createPrinterJob();
+            if (job != null && job.showPrintDialog(stage.getOwner())) {
+                boolean success = job.printPage(ticketNHbox);
+                if (success) {
+                    job.endJob();
+                }
             }
+        }
+    }
+
+    public void goToNextTicket(ActionEvent actionEvent) {
+        if (!tickets.isEmpty()) {
+            currentIndex = (currentIndex + 1) % tickets.size();
+            displayTicket(currentIndex);
+        }
+    }
+
+    public void goToPreviousTicket(ActionEvent actionEvent) {
+        if (!tickets.isEmpty()) {
+            currentIndex = (currentIndex - 1 + tickets.size()) % tickets.size();
+            displayTicket(currentIndex);
         }
     }
 }

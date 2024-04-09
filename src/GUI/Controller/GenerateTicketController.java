@@ -21,7 +21,6 @@ public class GenerateTicketController {
     public ChoiceBox ticketTypeChoiceBox;
     private EventCoordinatorViewController eventCoordinatorViewController;
     private Stage stage;
-    private TicketNController  ticketNController;
     private String eventTime, eventLocation, eventName;
 
     public void setEventCoordinatorController(EventCoordinatorViewController eventCoordinatorViewController) {
@@ -118,7 +117,7 @@ public class GenerateTicketController {
             String ticketPrice = priceField.getText();
             String serialNumber = generateSerialNumber();
 
-            Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName, null); // No seat for standing tickets
+            Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName, null);
             tickets.add(ticket);
             // Add ticket to database?
         }
@@ -138,7 +137,7 @@ public class GenerateTicketController {
             String ticketPrice = priceField.getText();
             String serialNumber = generateSerialNumber();
 
-            Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName, seatsArray[i]); // Assign selected seat
+            Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName, seatsArray[i]);
             tickets.add(ticket);
             // Add ticket to database?
         }
