@@ -3,26 +3,60 @@
     -fx-border-image-width: 0;
 }
 .coolBTN {
-    -fx-background-color: #3456f5;
+    -fx-background-color:  #222222;
+    -fx-font-family: Tahoma;
     -fx-padding: 4px;
 
     /* Top, Right, Bottom, Left */
-    -fx-text-fill: #f2f6f9;
+    -fx-text-fill: #F5F0EA;
     -fx-border-width: 0 0 0 0px;
     -fx-border-style: solid;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
 }
+.confirmBTN{
+    -fx-background-color:  #222222;
+    -fx-padding: 4px;
+
+    -fx-text-fill: #bfeca5;
+    -fx-font-family: Tahoma;
+    -fx-font-style: bold;
+    -fx-font-size: 16px;
+
+    /* Top, Right, Bottom, Left */
+    -fx-border-width: 0 0 0 0px;
+    -fx-border-style: solid;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.cancelBTN{
+    -fx-background-color:  #222222;
+    -fx-padding: 4px;
+
+    -fx-text-fill: #ff8e8e;
+    -fx-font-family: Tahoma;
+    -fx-font-style: bold;
+    -fx-font-size: 16px;
+
+    /* Top, Right, Bottom, Left */
+    -fx-border-width: 0 0 0 0px;
+    -fx-border-style: bold;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    }
+
 .topSection{
-    -fx-background-color: #3456f5;
+    -fx-background-color: #f1e9e1;
 }
 
 .deafultText{
     -fx-font-size: 50px;
+    -fx-font-family: Tahoma;
     -fx-text-fill: #3456f5;
 }
 .middleSection{
-    -fx-background-color: #000755;
+    -fx-background-color: #F5F0EA;
 
 }
 
