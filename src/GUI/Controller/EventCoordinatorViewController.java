@@ -37,6 +37,12 @@ public class EventCoordinatorViewController implements Initializable {
     private ObservableList<Event> events= FXCollections.observableArrayList();
     private final EventService eventService = new EventService();
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        poluteEvents();
+        eventTableProperties();
+    }
+
     private void eventTableProperties(){
         eventTable.setEditable(true);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -46,7 +52,20 @@ public class EventCoordinatorViewController implements Initializable {
         endDateColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
         locationGuidanceColumn.setCellValueFactory(new PropertyValueFactory<>("locationGuidance"));
         eventTable.setItems(events);
-
+        eventTable.setRowFactory(tv -> {
+            TableRow<Event> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount()==2 && !row.isEmpty()){
+                    Event rowEvent = row.getItem();
+                    try {
+                        viewUsersForEvent(rowEvent);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
+            return row;
+        });
     }
 
     private void poluteEvents(){
@@ -57,7 +76,7 @@ public class EventCoordinatorViewController implements Initializable {
     }
     @FXML
     private void addEvent(ActionEvent actionEvent) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CreateEventWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/CreateEventWindow.fxml"));
         Parent root;
         try {
             root = loader.load();
@@ -75,7 +94,7 @@ public class EventCoordinatorViewController implements Initializable {
     public void editEvent(ActionEvent actionEvent) {
         Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
         if (selectedEvent != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CreateEventWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/CreateEventWindow.fxml"));
             Parent root;
             try {
                 root = loader.load();
@@ -170,11 +189,17 @@ public class EventCoordinatorViewController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        poluteEvents();
-        eventTableProperties();
-    }
 
+    private void viewUsersForEvent(Event event) throws IOException {
+        Stage primaryStage = (Stage) eventTable.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/UsersForEventView.fxml"));
+        Parent root = loader.load();
+        UsersForEventViewController controller = loader.getController();
+        controller.setEvent(event);
+        controller.poluteUsers();
+        controller.initializeTableView();
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
 
 }
