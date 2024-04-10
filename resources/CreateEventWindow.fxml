@@ -13,15 +13,18 @@
 
 <AnchorPane fx:id="createEventWindow" prefHeight="564.0" prefWidth="772.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateEventViewController">
    <children>
-      <HBox prefHeight="106.0" prefWidth="780.0">
+      <HBox prefHeight="87.0" prefWidth="780.0">
          <children>
-            <Label alignment="CENTER" prefHeight="55.0" prefWidth="206.0" text="EVENT CREATOR">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="110.0" prefWidth="780.0" text="EVENT CREATOR">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <HBox.margin>
+                  <Insets bottom="30.0" />
+               </HBox.margin>
             </Label>
          </children></HBox>
-      <HBox layoutX="1.0" layoutY="86.0" prefHeight="409.0" prefWidth="780.0">
+      <HBox layoutX="1.0" layoutY="86.0" prefHeight="478.0" prefWidth="780.0">
          <children>
             <VBox prefHeight="380.0" prefWidth="418.0">
                <children>
@@ -35,7 +38,7 @@
                               <Insets bottom="2.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="eventNameTF" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #F5F0EA;">
+                        <TextField fx:id="eventNameTF" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #F5F0EA;">
                            <VBox.margin>
                               <Insets left="11.0" right="11.0" />
                            </VBox.margin>
@@ -55,7 +58,7 @@
                               <Insets bottom="2.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="startingTimeTF" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #F5F0EA;">
+                        <TextField fx:id="startingTimeTF" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #F5F0EA;">
                            <VBox.margin>
                               <Insets left="11.0" right="11.0" />
                            </VBox.margin>
@@ -65,7 +68,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </VBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="350.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="370.0">
                      <children>
                         <Label text="STARTING DATE" textFill="#222222">
                            <font>
@@ -84,27 +87,23 @@
                         <Insets bottom="15.0" />
                      </VBox.margin>
                   </HBox>
-                  <VBox prefHeight="87.0" prefWidth="379.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="350.0">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="350.0">
-                           <children>
-                              <Label text="ENDING DATE" textAlignment="CENTER" textFill="#222222">
-                                 <font>
-                                    <Font name="Tahoma" size="18.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                                 <padding>
-                                    <Insets right="10.0" />
-                                 </padding>
-                              </Label>
-                              <DatePicker fx:id="endingDateEventButton" prefHeight="31.0" prefWidth="187.0" style="-fx-background-color: #F5F0EA;" />
-                           </children>
-                        </HBox>
+                        <Label text="ENDING DATE" textAlignment="CENTER" textFill="#222222">
+                           <font>
+                              <Font name="Tahoma" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <DatePicker fx:id="endingDateEventButton" prefHeight="30.0" prefWidth="196.0" style="-fx-background-color: #F5F0EA;" />
                      </children>
-                  </VBox>
-                  <VBox prefHeight="87.0" prefWidth="379.0" />
+                  </HBox>
+                  <HBox alignment="BOTTOM_LEFT" prefHeight="104.0" prefWidth="391.0" spacing="15.0" />
                </children>
                <HBox.margin>
                   <Insets />
@@ -122,7 +121,7 @@
                               <Insets bottom="2.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="eventLocationTF" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #F5F0EA;">
+                        <TextField fx:id="eventLocationTF" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #F5F0EA;">
                            <VBox.margin>
                               <Insets left="11.0" right="11.0" />
                            </VBox.margin>
@@ -142,7 +141,7 @@
                               <Insets bottom="2.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="howToArriveTF" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #F5F0EA;">
+                        <TextField fx:id="howToArriveTF" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #F5F0EA;">
                            <VBox.margin>
                               <Insets left="11.0" right="11.0" />
                            </VBox.margin>
@@ -162,7 +161,7 @@
                               <Insets bottom="2.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="otherInfoTF" prefHeight="70.0" prefWidth="94.0" style="-fx-background-color: #F5F0EA;">
+                        <TextField fx:id="otherInfoTF" prefHeight="70.0" prefWidth="90.0" style="-fx-background-color: #F5F0EA;">
                            <VBox.margin>
                               <Insets left="11.0" right="11.0" />
                            </VBox.margin>
@@ -195,9 +194,6 @@
                </children>
             </VBox>
          </children>
-         <padding>
-            <Insets top="20.0" />
-         </padding>
       </HBox>
    </children>
    <effect>
