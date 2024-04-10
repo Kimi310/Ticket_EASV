@@ -13,7 +13,6 @@ public class EventService {
 
     public void addEvent(Event event){
         single.addEventSingle(addEvent.newEvent(event));
-
     }
 
     public void deleteEvent(Event event){

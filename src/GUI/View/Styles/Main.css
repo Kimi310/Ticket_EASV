@@ -4,6 +4,7 @@
 }
 .coolBTN {
     -fx-background-color: #222222;
+
     -fx-padding: 4px;
 
     /* Top, Right, Bottom, Left */
@@ -13,6 +14,7 @@
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
 }
+
 
 .confirmBTN{
      -fx-background-color:  #222222;
@@ -57,10 +59,12 @@
 
 .deafultText{
     -fx-font-size: 50px;
+  
     -fx-text-fill: #222222;
 }
 .middleSection{
     -fx-background-color: #F5F0EA;
+
 
 }
 
