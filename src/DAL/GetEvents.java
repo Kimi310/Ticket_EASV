@@ -24,7 +24,7 @@ public class GetEvents {
                 String name         = rs.getString("EventName");
                 String time         = rs.getString("Time");
                 String location     = rs.getString("Location");
-                String notes        = rs.getString("Notes");
+                String notes         = rs.getString("Notes");
                 String endDate = rs.getString("EndDate");
                 String locationGuidance = rs.getString("LocationGuidance");
 
