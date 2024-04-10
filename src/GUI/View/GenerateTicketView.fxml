@@ -11,28 +11,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="494.0" prefWidth="340.0" style="-fx-background-color: blue; -fx-border-color: black;" stylesheets="@Styles/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.GenerateTicketController">
+<AnchorPane prefHeight="494.0" prefWidth="340.0" stylesheets="@Styles/Main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.GenerateTicketController">
    <children>
       <VBox layoutX="2.0" layoutY="3.0" prefHeight="516.0" prefWidth="340.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
                <children>
-                  <Label text="Amount" textFill="WHITE">
+                  <Label styleClass="txt" text="Amount" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="amountField" alignment="CENTER" prefHeight="40.0" prefWidth="70.0" />
+                  <TextField fx:id="amountField" alignment="CENTER" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #f1e9e1;">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
                <children>
-                  <Label text="Ticket Type" textFill="WHITE">
+                  <Label styleClass="txt" text="Ticket Type" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="ticketTypeChoiceBox" layoutX="14.0" layoutY="165.0">
+                  <ChoiceBox fx:id="ticketTypeChoiceBox" layoutX="14.0" layoutY="165.0" style="-fx-background-color: #f1e9e1;">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:value="Seated Event" />
@@ -44,37 +47,43 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
                <children>
-                  <Label text="Name" textFill="WHITE">
+                  <Label styleClass="txt" text="Name" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nameField" alignment="CENTER" prefHeight="41.0" prefWidth="244.0" />
+                  <TextField fx:id="nameField" alignment="CENTER" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #f1e9e1;">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
                <children>
-                  <Label text="Email" textFill="WHITE">
+                  <Label styleClass="txt" text="Email" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="emailField" alignment="CENTER" prefHeight="41.0" prefWidth="245.0" />
+                  <TextField fx:id="emailField" alignment="CENTER" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #f1e9e1;" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
                <children>
-                  <Label text="Price" textFill="WHITE">
+                  <Label styleClass="txt" text="Price" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="priceField" alignment="CENTER" prefHeight="40.0" prefWidth="70.0" />
+                  <TextField fx:id="priceField" alignment="CENTER" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #f1e9e1;">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#generateTicket" prefHeight="44.0" prefWidth="190.0" styleClass="coolBTN" text="Generate Ticket">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generateTicket" prefHeight="41.0" prefWidth="186.0" styleClass="coolBTN" text="Generate Ticket" textAlignment="CENTER">
                      <font>
                         <Font size="25.0" />
                      </font>
