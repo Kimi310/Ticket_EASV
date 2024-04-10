@@ -19,13 +19,15 @@
                </font>
             </Button>
             <Button id="cancelCreateEventButton" layoutX="242.0" layoutY="202.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" styleClass="cancelBTN" text="Cancel" textAlignment="CENTER" textFill="#bc0000">
+
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
          </children>
-      </Pane>
+     </Pane>
       <Label layoutX="72.0" layoutY="69.0" styleClass="txt" text="NAME" textFill="WHITE">
+
          <font>
             <Font name="Corbel Light" size="18.0" />
          </font>
@@ -33,15 +35,18 @@
       <ChoiceBox layoutX="161.0" layoutY="171.0" prefHeight="30.0" prefWidth="198.0" />
       <DatePicker layoutX="161.0" layoutY="117.0" prefHeight="30.0" prefWidth="198.0" />
       <Label layoutX="74.0" layoutY="176.0" styleClass="txt" text="TYPE" textFill="WHITE">
+
          <font>
             <Font name="Corbel Light" size="18.0" />
          </font>
       </Label>
       <Label layoutX="72.0" layoutY="121.0" styleClass="txt" text="DATE" textFill="WHITE">
+
          <font>
             <Font name="Corbel Light" size="18.0" />
          </font>
       </Label>
+
       <TextField layoutX="161.0" layoutY="64.0" prefHeight="30.0" prefWidth="198.0">
          <font>
             <Font size="15.0" />

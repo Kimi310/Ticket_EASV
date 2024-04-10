@@ -1,20 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="2000.0" styleClass="ticketBG" stylesheets="@Styles/Main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-   <right>
-      <Label prefHeight="107.0" prefWidth="420.0" text="Label" BorderPane.alignment="CENTER">
+<AnchorPane fx:id="ticketPane" prefHeight="620.0" prefWidth="1920.0" styleClass="ticketBG" stylesheets="@Styles/Main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketNController">
+   <children>
+      <Label fx:id="ticketPriceLabel" layoutX="1265.0" layoutY="272.0" text="price" AnchorPane.topAnchor="272.0">
          <font>
-            <Font size="24.0" />
+            <Font size="40.0" />
          </font>
-         <BorderPane.margin>
-            <Insets bottom="400.0" />
-         </BorderPane.margin>
       </Label>
-   </right>
-</BorderPane>
+      <Label fx:id="ticketTimeLabel" layoutX="892.0" layoutY="269.0" text="time">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="ticketLocationLabel" layoutX="941.0" layoutY="439.0" text="location">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="ticketNamelabel" layoutX="1583.0" layoutY="49.0" prefHeight="47.0" prefWidth="382.0" text="name">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="ticketEmailLabel" layoutX="1583.0" layoutY="538.0" prefHeight="67.0" prefWidth="382.0" text="email">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="serialNumberLabel" layoutX="-151.0" layoutY="290.0" prefHeight="38.0" prefWidth="500.0" rotate="-90.0" text="serial" textFill="WHITE">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="ticketEventNameLabel" layoutX="219.0" layoutY="446.0" prefHeight="104.0" prefWidth="599.0" text="EventName">
+         <font>
+            <Font size="56.0" />
+         </font>
+      </Label>
+      <Label fx:id="seatLabel" layoutX="1245.0" layoutY="439.0" prefHeight="58.0" prefWidth="172.0" text="Seat">
+         <font>
+            <Font size="40.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

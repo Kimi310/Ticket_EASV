@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="494.0" prefWidth="340.0" style="-fx-background-color: blue; -fx-border-color: black;" stylesheets="@Styles/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.GenerateTicketController">
+   <children>
+      <VBox layoutX="2.0" layoutY="3.0" prefHeight="516.0" prefWidth="340.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
+               <children>
+                  <Label text="Amount" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="amountField" alignment="CENTER" prefHeight="40.0" prefWidth="70.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
+               <children>
+                  <Label text="Ticket Type" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="ticketTypeChoiceBox" layoutX="14.0" layoutY="165.0">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Seated Event" />
+                           <String fx:value="Standing Event" />
+                        </FXCollections>
+                     </items>
+                  </ChoiceBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
+               <children>
+                  <Label text="Name" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameField" alignment="CENTER" prefHeight="41.0" prefWidth="244.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
+               <children>
+                  <Label text="Email" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="emailField" alignment="CENTER" prefHeight="41.0" prefWidth="245.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
+               <children>
+                  <Label text="Price" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="priceField" alignment="CENTER" prefHeight="40.0" prefWidth="70.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="87.0" prefWidth="446.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#generateTicket" prefHeight="44.0" prefWidth="190.0" styleClass="coolBTN" text="Generate Ticket">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
