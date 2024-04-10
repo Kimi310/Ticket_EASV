@@ -85,7 +85,7 @@ public class GenerateTicketController {
     }
 
     private void openSeatSelectionWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SeatSelectionView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/SeatSelectionView.fxml"));
         Parent root;
         try {
             root = loader.load();
@@ -147,7 +147,7 @@ public class GenerateTicketController {
     }
 
     private void openTicketPrintView(List<Ticket> tickets) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/TicketPrintView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/TicketPrintView.fxml"));
         try {
             Parent root = loader.load();
             TicketPrintViewController ticketPrintController = loader.getController();

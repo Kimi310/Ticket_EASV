@@ -57,7 +57,7 @@ public class EventCoordinatorViewController implements Initializable {
     }
     @FXML
     private void addEvent(ActionEvent actionEvent) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CreateEventWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/CreateEventWindow.fxml"));
         Parent root;
         try {
             root = loader.load();
@@ -75,7 +75,7 @@ public class EventCoordinatorViewController implements Initializable {
     public void editEvent(ActionEvent actionEvent) {
         Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
         if (selectedEvent != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CreateEventWindow.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/CreateEventWindow.fxml"));
             Parent root;
             try {
                 root = loader.load();
@@ -171,7 +171,7 @@ public class EventCoordinatorViewController implements Initializable {
     public void openTicketGenerator(ActionEvent actionEvent) {
         Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
         if (selectedEvent != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GenerateTicketView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/GenerateTicketView.fxml"));
             Parent root;
             try {
                 root = loader.load();

@@ -37,7 +37,7 @@ public class TicketPrintViewController {
     }
 
     private void addTicketToPrint(Ticket ticket) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/TicketN.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/TicketN.fxml"));
         try {
             ticketNHbox.getChildren().add(loader.load());
             ticketNController = loader.getController();
