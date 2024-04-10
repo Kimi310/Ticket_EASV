@@ -98,11 +98,8 @@ public class EventCoordinatorViewController implements Initializable {
             Parent root;
             try {
                 root = loader.load();
-
                 CreateEventViewController createEventController = loader.getController();
-
                 createEventController.setEventCoordinatorController(this);
-
 
                 createEventController.eventNameTF.setText(selectedEvent.getName());
                 //dates are messed up, have to fix this so it retreives the dates as well, rn it only retrieves time
@@ -110,8 +107,6 @@ public class EventCoordinatorViewController implements Initializable {
                 createEventController.eventLocationTF.setText(selectedEvent.getLocation());
                 createEventController.otherInfoTF.setText(selectedEvent.getNotes());
                 createEventController.howToArriveTF.setText(selectedEvent.getLocationGuidance());
-
-
 
                 Stage stage = new Stage();
                 stage.setTitle("Edit event");
@@ -123,7 +118,6 @@ public class EventCoordinatorViewController implements Initializable {
                 e.printStackTrace();
             }
         } else {
-            // Show an alert or message indicating that no Event is selected
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Event Selected");
             alert.setHeaderText(null);
@@ -139,17 +133,14 @@ public class EventCoordinatorViewController implements Initializable {
             alert.setTitle("Confirm Deletion");
             alert.setHeaderText("Are you sure you want to delete the selected event?");
             alert.setContentText("This action cannot be undone.");
-            // Handle the users response
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    // User clicked OK, delete the event
                     eventService.deleteEvent(eventTable.getSelectionModel().getSelectedItem());
                     events.clear();
                     events.addAll(eventService.getEvents());
                 }
             });
         } else {
-            // Show a message saying that no event is selected
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Event Selected");
             alert.setHeaderText(null);
@@ -202,4 +193,30 @@ public class EventCoordinatorViewController implements Initializable {
         primaryStage.show();
     }
 
+    public void openTicketGenerator(ActionEvent actionEvent) {
+        Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
+        if (selectedEvent != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/GenerateTicketView.fxml"));
+            Parent root;
+            try {
+                root = loader.load();
+                GenerateTicketController ticketController = loader.getController();
+                ticketController.setEventCoordinatorController(this);
+                ticketController.setEventProperties(selectedEvent.getTime(), selectedEvent.getLocation(), selectedEvent.getName());
+                Stage stage = new Stage();
+                stage.setTitle("Generate Ticket(s)");
+                stage.setScene(new Scene(root));
+                ticketController.setStage(stage);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Event Selected");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select an Event to generate a Ticket(s).");
+            alert.showAndWait();
+        }
+    }
 }

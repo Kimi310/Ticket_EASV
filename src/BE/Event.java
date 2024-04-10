@@ -8,6 +8,7 @@ public class Event {
     private String notes;
     private String endDate;
     private String locationGuidance;
+    private String type;
 
     public Event(int id, String name, String time, String location, String notes, String endDate, String locationGuidance) {
         this.id = id;
@@ -52,6 +53,9 @@ public class Event {
     public String getEndDate() {
         return endDate;
     }
+    public String getType(){
+        return type;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -77,7 +81,12 @@ public class Event {
         this.locationGuidance = locationGuidance;
     }
 
+    public void setType(String type){
+        this.type = type;
+    }
+
     public String getLocationGuidance() {
         return locationGuidance;
     }
+
 }
