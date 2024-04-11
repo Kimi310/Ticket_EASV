@@ -2,6 +2,7 @@ package GUI.Controller;
 
 import BE.Event;
 import BE.Ticket;
+import BE.User;
 import BLL.EventService;
 import BLL.UserEventService;
 import javafx.event.ActionEvent;
@@ -30,6 +31,8 @@ public class GenerateTicketController {
     private UserEventService userEventService = new UserEventService();
     private EventService eventService = new EventService();
     private ArrayList<Event> events = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
+
 
     public void setEventCoordinatorController(EventCoordinatorViewController eventCoordinatorViewController) {
         this.eventCoordinatorViewController = eventCoordinatorViewController;
@@ -126,7 +129,17 @@ public class GenerateTicketController {
         String serialNumber = generateSerialNumber();
 
         Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName);
-        int userId = userEventService.addUser(nameField.getText(),emailField.getText());
+        users.addAll(userEventService.getAllUsers());
+        int userId = -1;
+        for (User u: users) {
+            if (Objects.equals(u.getEmail(), ticketEmail)){
+                userId=u.getId();
+                break;
+            }
+        }
+        if (userId==-1){
+            userId=userEventService.addUser(nameField.getText(),emailField.getText());
+        }
         events.addAll(eventService.getEvents());
         int eventId = -1;
         for (Event e:events) {
@@ -151,7 +164,18 @@ public class GenerateTicketController {
             String serialNumber = generateSerialNumber();
 
             Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName);
-        int userId = userEventService.addUser(nameField.getText(),emailField.getText());
+        users.addAll(userEventService.getAllUsers());
+        int userId = -1;
+        for (User u: users) {
+            if (Objects.equals(u.getEmail(), ticketEmail)){
+                userId=u.getId();
+                break;
+            }
+        }
+        if (userId==-1){
+            userId=userEventService.addUser(nameField.getText(),emailField.getText());
+        }
+
         events.addAll(eventService.getEvents());
         int eventId = -1;
         for (Event e:events) {
