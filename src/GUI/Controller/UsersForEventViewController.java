@@ -72,4 +72,12 @@ public class UsersForEventViewController implements Initializable {
         usersForEventStage.setScene(new Scene(root));
         usersForEventStage.show();
     }
+    @FXML
+    private void goToAllUsers(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AllUsersView.fxml"));
+        Parent root = loader.load();
+        Stage usersForEventStage = (Stage) usersTable.getScene().getWindow();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
+    }
 }

@@ -221,4 +221,12 @@ public class EventCoordinatorViewController implements Initializable {
             alert.showAndWait();
         }
     }
+    @FXML
+    private void goToAllUsers(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AllUsersView.fxml"));
+        Parent root = loader.load();
+        Stage usersForEventStage = (Stage) eventTable.getScene().getWindow();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
+    }
 }

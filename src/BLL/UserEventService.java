@@ -32,7 +32,9 @@ public class UserEventService {
         }
         return placeholder;
     }
-
+    public ArrayList<User> getAllUsers(){
+        return users;
+    }
     public int addUser(String userName, String email){
         User user = addUser.addUser(userName,email);
         single.addUser(user);
