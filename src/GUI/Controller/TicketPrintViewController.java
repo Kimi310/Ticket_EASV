@@ -9,14 +9,13 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 public class TicketPrintViewController {
     @FXML
     public HBox ticketNHbox;
     private Stage stage;
     private TicketNController ticketNController;
-    private List<Ticket> tickets;
+    private Ticket ticket;
     private int currentIndex = 0;
 
 
@@ -24,16 +23,14 @@ public class TicketPrintViewController {
         this.stage = stage;
     }
 
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
-        if (!tickets.isEmpty()) {
-            displayTicket(0);
-        }
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
+        displayTicket();
     }
 
-    private void displayTicket(int index) {
+    private void displayTicket() {
         ticketNHbox.getChildren().clear();
-        addTicketToPrint(tickets.get(index));
+        addTicketToPrint(ticket);
     }
 
     private void addTicketToPrint(Ticket ticket) {
@@ -53,7 +50,7 @@ public class TicketPrintViewController {
     }
 
     public void printCurrentTicket(ActionEvent actionEvent) {
-        if (!tickets.isEmpty()) {
+
             PrinterJob job = PrinterJob.createPrinterJob();
             if (job != null && job.showPrintDialog(stage.getOwner())) {
                 boolean success = job.printPage(ticketNHbox);
@@ -61,20 +58,8 @@ public class TicketPrintViewController {
                     job.endJob();
                 }
             }
-        }
+
     }
 
-    public void goToNextTicket(ActionEvent actionEvent) {
-        if (!tickets.isEmpty()) {
-            currentIndex = (currentIndex + 1) % tickets.size();
-            displayTicket(currentIndex);
-        }
-    }
 
-    public void goToPreviousTicket(ActionEvent actionEvent) {
-        if (!tickets.isEmpty()) {
-            currentIndex = (currentIndex - 1 + tickets.size()) % tickets.size();
-            displayTicket(currentIndex);
-        }
-    }
 }

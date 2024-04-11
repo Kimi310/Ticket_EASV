@@ -22,6 +22,7 @@ public class GenerateTicketController {
     private EventCoordinatorViewController eventCoordinatorViewController;
     private Stage stage;
     private String eventTime, eventLocation, eventName;
+    private Ticket ticket;
 
     public void setEventCoordinatorController(EventCoordinatorViewController eventCoordinatorViewController) {
         this.eventCoordinatorViewController = eventCoordinatorViewController;
@@ -32,11 +33,11 @@ public class GenerateTicketController {
     }
 
     public void generateTicket(ActionEvent actionEvent) {
-        if (!isValidNumber(amountField.getText()) || !isValidNumber(priceField.getText())) {
+        if (!isValidNumber(priceField.getText())) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Amount of tickets and/or price must be numbers");
+            alert.setContentText("Ticket price must be a number");
             alert.showAndWait();
             return;
         }
@@ -51,10 +52,10 @@ public class GenerateTicketController {
             return;
         }
 
-        if (selectedTicketType.equals("Seated Event")) {
-            openSeatSelectionWindow();
+        if (selectedTicketType.equals("VIP Ticket")) {
+            generateVIPTickets();
         } else {
-            generateStandingTickets();
+            generateNormalTickets();
         }
     }
 
@@ -97,7 +98,7 @@ public class GenerateTicketController {
             stage.setOnCloseRequest(event -> {
                 String selectedSeats = seatSelectionController.getSelectedSeats();
                 if (!selectedSeats.equals("No seats selected")) {
-                    generateSeatedTickets(selectedSeats);
+                  //  generateSeatedTickets(selectedSeats);
                 }
             });
             stage.showAndWait();
@@ -107,51 +108,51 @@ public class GenerateTicketController {
     }
 
 
-    private void generateStandingTickets() {
-        int amount = Integer.parseInt(amountField.getText());
-        List<Ticket> tickets = new ArrayList<>();
+    private void generateVIPTickets() {
+        //int amount = Integer.parseInt(amountField.getText());
+        //List<Ticket> tickets = new ArrayList<>();
 
-        for (int i = 0; i < amount; i++) {
-            String ticketName = nameField.getText() + "_" + (i + 1);
+        // for (int i = 0; i < amount; i++) {
+            String ticketName = nameField.getText();
             String ticketEmail = emailField.getText();
             String ticketPrice = priceField.getText();
             String serialNumber = generateSerialNumber();
 
-            Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName, null);
-            tickets.add(ticket);
+            Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName);
+            //tickets.add(ticket);
             // Add ticket to database?
-        }
 
-        openTicketPrintView(tickets);
+
+        openTicketPrintView(ticket);
         ((Stage) nameField.getScene().getWindow()).close();
     }
 
-    private void generateSeatedTickets(String selectedSeats) {
-        String[] seatsArray = selectedSeats.split(", ");
-        int amount = Math.min(seatsArray.length, Integer.parseInt(amountField.getText()));
-        List<Ticket> tickets = new ArrayList<>();
+    private void generateNormalTickets() {
+       //String[] seatsArray = selectedSeats.split(", ");
+        //int amount = Math.min(seatsArray.length, Integer.parseInt(amountField.getText()));
+       // List<Ticket> tickets = new ArrayList<>();
 
-        for (int i = 0; i < amount; i++) {
-            String ticketName = nameField.getText() + "_" + (i + 1);
+
+            String ticketName = nameField.getText();
             String ticketEmail = emailField.getText();
             String ticketPrice = priceField.getText();
             String serialNumber = generateSerialNumber();
 
-            Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName, seatsArray[i]);
-            tickets.add(ticket);
+            Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName);
+        //tickets.add(ticket);
             // Add ticket to database?
-        }
 
-        openTicketPrintView(tickets);
+
+        openTicketPrintView(ticket);
         ((Stage) nameField.getScene().getWindow()).close();
     }
 
-    private void openTicketPrintView(List<Ticket> tickets) {
+    private void openTicketPrintView(Ticket ticket) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/TicketPrintView.fxml"));
         try {
             Parent root = loader.load();
             TicketPrintViewController ticketPrintController = loader.getController();
-            ticketPrintController.setTickets(tickets);
+            ticketPrintController.setTicket(ticket);
 
             Stage stage = new Stage();
             stage.setTitle("Print Ticket:");

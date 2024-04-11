@@ -3,6 +3,8 @@ package BLL;
 import BE.Event;
 import BE.User;
 import BE.UserEvent;
+import DAL.AddUser;
+import DAL.AddUserEvent;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
@@ -13,6 +15,8 @@ public class UserEventService {
     private final BLLSingleton single = BLLSingleton.getInstance();
     private ArrayList<UserEvent> userEvents = single.getUserEvents();
     private ArrayList<User> users = single.getUsers();
+    private AddUser addUser = new AddUser();
+    private AddUserEvent addUserEvent = new AddUserEvent();
 
     public ArrayList<User> getUsersForEvent(Event event){
         ArrayList<User> placeholder = new ArrayList<>();
@@ -27,5 +31,13 @@ public class UserEventService {
             }
         }
         return placeholder;
+    }
+
+    public void addUser(String userName, String email){
+        single.addUser(addUser.addUser(userName,email));
+    }
+
+    public void addUserEvent(int userId,int eventId){
+        single.addUserEvent(addUserEvent.addUserEvent(userId,eventId));
     }
 }
