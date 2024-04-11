@@ -6,6 +6,7 @@ import BLL.UserEventService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -63,5 +64,12 @@ public class UsersForEventViewController implements Initializable {
         usersForEventStage.setScene(new Scene(root));
         usersForEventStage.show();
     }
-
+    @FXML
+    private void goToEvents(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/EventCoordinatorView.fxml"));
+        Parent root = loader.load();
+        Stage usersForEventStage = (Stage) usersTable.getScene().getWindow();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
+    }
 }
