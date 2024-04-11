@@ -56,16 +56,6 @@
             <children>
                 <VBox fillWidth="false" prefHeight="549.0" prefWidth="100.0" spacing="20.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#addUser" prefHeight="34.0" prefWidth="114.0" styleClass="coolBTN" text="Add">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#editUser" prefHeight="34.0" prefWidth="114.0" styleClass="coolBTN" text="Edit">
-                            <font>
-                                <Font size="17.0" />
-                            </font>
-                        </Button>
                         <Button mnemonicParsing="false" onAction="#deleteUser" prefHeight="34.0" prefWidth="114.0" styleClass="coolBTN" text="Delete">
                             <font>
                                 <Font size="17.0" />

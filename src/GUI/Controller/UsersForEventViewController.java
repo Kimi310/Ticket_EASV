@@ -34,16 +34,6 @@ public class UsersForEventViewController implements Initializable {
         userNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         usersTable.setItems(users);
-        usersTable.setRowFactory(tv -> {
-            TableRow<User> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount()==2 && !row.isEmpty()){
-                    User rowUser = row.getItem();
-                    //implement preview of printing a ticket
-                }
-            });
-            return row;
-        });
     }
 
     public void poluteUsers(){
@@ -55,12 +45,6 @@ public class UsersForEventViewController implements Initializable {
 
     public void setEvent(Event e){
         event = e;
-    }
-
-    public void editUser(ActionEvent actionEvent) {
-    }
-
-    public void addUser(ActionEvent actionEvent) {
     }
 
     public void deleteUser(ActionEvent actionEvent) {
