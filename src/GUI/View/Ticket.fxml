@@ -4,14 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="230.0" prefWidth="640.0" styleClass="ticketBG" stylesheets="@Styles/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketNController">
+<AnchorPane prefHeight="230.0" prefWidth="640.0" styleClass="ticketBG" stylesheets="@Styles/Main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketNController">
    <children>
       <Label fx:id="serialNumberLabel" layoutX="-48.0" layoutY="107.0" prefHeight="15.0" prefWidth="167.0" rotate="-90.0" text="serial" textFill="WHITE">
          <font>
-            <Font size="10.0" />
+            <Font size="8.0" />
          </font>
       </Label>
-      <Label fx:id="ticketEventNameLabel" layoutX="68.0" layoutY="35.0" text="EventName">
+      <Label fx:id="ticketEventNameLabel" layoutX="77.0" layoutY="34.0" text="EventName">
          <font>
             <Font name="Tahoma" size="26.0" />
          </font>
@@ -27,8 +27,11 @@
          </font>
       </Label>
       <Label fx:id="ticketLocationLabel" layoutX="301.0" layoutY="166.0" text="location" />
-      <Label fx:id="ticketTypeLabel" layoutX="108.0" layoutY="165.0" text="typeTicket" />
-      <Label fx:id="ticketNamelabel" layoutX="530.0" layoutY="34.0" text="name">
+      <Label fx:id="ticketTypeLabel" layoutX="108.0" layoutY="165.0" text="typeTicket">
+         <font>
+            <Font name="Tahoma Bold" size="15.0" />
+         </font></Label>
+      <Label fx:id="ticketNamelabel" layoutX="548.0" layoutY="36.0" text="name">
          <font>
             <Font size="10.0" />
          </font>
