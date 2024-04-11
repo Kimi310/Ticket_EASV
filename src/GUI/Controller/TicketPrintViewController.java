@@ -34,16 +34,11 @@ public class TicketPrintViewController {
     }
 
     private void addTicketToPrint(Ticket ticket) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/TicketN.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Ticket.fxml"));
         try {
             ticketNHbox.getChildren().add(loader.load());
             ticketNController = loader.getController();
             ticketNController.setNewTicket(ticket.getTicketName(), ticket.getTicketEmail(), ticket.getTicketPrice(), ticket.getSerialNumber(), ticket.getEventTime(), ticket.getEventLocation(), ticket.getEventName());
-            if (ticket.getSeat() != null) {
-                ticketNController.setSeat(ticket.getSeat());
-            } else {
-                ticketNController.seatLabel.setVisible(false);
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }

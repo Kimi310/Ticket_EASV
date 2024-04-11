@@ -6,7 +6,7 @@ import javafx.scene.layout.AnchorPane;
 
 
 public class TicketNController {
-    public Label ticketNamelabel, ticketEmailLabel, serialNumberLabel, ticketPriceLabel, ticketLocationLabel, ticketTimeLabel, ticketEventNameLabel;
+    public Label ticketNamelabel, ticketEmailLabel, serialNumberLabel, ticketPriceLabel, ticketLocationLabel, ticketTimeLabel, ticketEventNameLabel, ticketTypeLabel;
     public AnchorPane ticketPane;
     public Label seatLabel;
 
