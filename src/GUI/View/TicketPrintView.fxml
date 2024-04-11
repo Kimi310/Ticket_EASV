@@ -15,17 +15,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="200.0" prefWidth="1920.0" spacing="20.0" styleClass="middleSection">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#goToPreviousTicket" styleClass="coolBTN" text="Previous" textAlignment="CENTER">
-                           <font>
-                              <Font size="34.0" />
-                           </font>
-                        </Button>
                         <Button mnemonicParsing="false" onAction="#printCurrentTicket" styleClass="coolBTN" text="Print" textAlignment="CENTER">
-                           <font>
-                              <Font size="34.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#goToNextTicket" styleClass="coolBTN" text="Next" textAlignment="CENTER">
                            <font>
                               <Font size="34.0" />
                            </font>

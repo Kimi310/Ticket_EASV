@@ -19,7 +19,7 @@ public class Ticket {
         this.serialNumber = serialNumber;
     }
 
-    public Ticket(String ticketName, String ticketEmail, String ticketPrice, String serialNumber, String eventTime, String eventLocation, String eventName, String seat) {
+    public Ticket(String ticketName, String ticketEmail, String ticketPrice, String serialNumber, String eventTime, String eventLocation, String eventName) {
         this.ticketName = ticketName;
         this.ticketEmail = ticketEmail;
         this.ticketPrice = ticketPrice;
@@ -27,7 +27,6 @@ public class Ticket {
         this.eventTime = eventTime;
         this.eventLocation = eventLocation;
         this.eventName = eventName;
-        this.seat = seat;
     }
 
 
