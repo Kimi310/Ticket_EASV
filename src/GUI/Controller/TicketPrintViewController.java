@@ -17,15 +17,17 @@ public class TicketPrintViewController {
     private TicketNController ticketNController;
     private Ticket ticket;
     private int currentIndex = 0;
+    private String ticketType;
 
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
-    public void setTicket(Ticket ticket) {
+    public void setTicket(Ticket ticket, String ticketType) {
         this.ticket = ticket;
         displayTicket();
+        ticketNController.ticketTypeLabel.setText(ticketType);
     }
 
     private void displayTicket() {
@@ -34,16 +36,11 @@ public class TicketPrintViewController {
     }
 
     private void addTicketToPrint(Ticket ticket) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/TicketN.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Ticket.fxml"));
         try {
             ticketNHbox.getChildren().add(loader.load());
             ticketNController = loader.getController();
             ticketNController.setNewTicket(ticket.getTicketName(), ticket.getTicketEmail(), ticket.getTicketPrice(), ticket.getSerialNumber(), ticket.getEventTime(), ticket.getEventLocation(), ticket.getEventName());
-            if (ticket.getSeat() != null) {
-                ticketNController.setSeat(ticket.getSeat());
-            } else {
-                ticketNController.seatLabel.setVisible(false);
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }

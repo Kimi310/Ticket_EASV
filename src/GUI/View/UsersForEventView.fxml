@@ -61,6 +61,11 @@
                                 <Font size="17.0" />
                             </font>
                         </Button>
+                  <Button mnemonicParsing="false" onAction="#goBackBtn" prefHeight="34.0" prefWidth="114.0" styleClass="coolBTN" text="Back">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
                     </children>
                     <HBox.margin>
                         <Insets left="20.0" />

@@ -135,7 +135,7 @@ public class GenerateTicketController {
             }
         }
         userEventService.addUserEvent(userId,eventId);
-        openTicketPrintView(ticket);
+        openTicketPrintView(ticket, "VIP Ticket");
         ((Stage) nameField.getScene().getWindow()).close();
     }
 
@@ -151,15 +151,8 @@ public class GenerateTicketController {
             String serialNumber = generateSerialNumber();
 
             Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName);
-        int userId = userEventService.addUser(nameField.getText(),emailField.getText());
-        events.addAll(eventService.getEvents());
-        int eventId = -1;
-        for (Event e:events) {
-            if (Objects.equals(e.getName(), eventName)){
-                eventId=e.getId();
-            }
-        }
-        userEventService.addUserEvent(userId,eventId);
+        //tickets.add(ticket);
+            // Add ticket to database?
 
 
         openTicketPrintView(ticket);

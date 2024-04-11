@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class UsersForEventViewController implements Initializable {
     private ObservableList<User> users = FXCollections.observableArrayList();
     private final UserEventService userEventService = new UserEventService();
     private Event event;
+    private Stage eventCoordinatorStage;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,4 +53,15 @@ public class UsersForEventViewController implements Initializable {
     }
 
 
+    public void goBackBtn(ActionEvent actionEvent) {
+        if (eventCoordinatorStage != null) {
+            eventCoordinatorStage.show();
+            ((Stage) usersTable.getScene().getWindow()).close();
+        }
+
+    }
+
+    public void setEventCoordinatorStage(Stage stage) {
+        eventCoordinatorStage = stage;
+    }
 }
