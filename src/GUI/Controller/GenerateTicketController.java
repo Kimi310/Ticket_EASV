@@ -123,7 +123,7 @@ public class GenerateTicketController {
             // Add ticket to database?
 
 
-        openTicketPrintView(ticket);
+        openTicketPrintView(ticket, "VIP Ticket");
         ((Stage) nameField.getScene().getWindow()).close();
     }
 
@@ -143,16 +143,16 @@ public class GenerateTicketController {
             // Add ticket to database?
 
 
-        openTicketPrintView(ticket);
+        openTicketPrintView(ticket, "Normal Ticket");
         ((Stage) nameField.getScene().getWindow()).close();
     }
 
-    private void openTicketPrintView(Ticket ticket) {
+    private void openTicketPrintView(Ticket ticket, String ticketType) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/TicketPrintView.fxml"));
         try {
             Parent root = loader.load();
             TicketPrintViewController ticketPrintController = loader.getController();
-            ticketPrintController.setTicket(ticket);
+            ticketPrintController.setTicket(ticket, ticketType);
 
             Stage stage = new Stage();
             stage.setTitle("Print Ticket:");

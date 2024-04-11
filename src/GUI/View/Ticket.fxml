@@ -27,7 +27,7 @@
          </font>
       </Label>
       <Label fx:id="ticketLocationLabel" layoutX="301.0" layoutY="166.0" text="location" />
-      <Label fx:id="ticketTypeLabel" layoutX="108.0" layoutY="166.0" text="typeTicket" />
+      <Label fx:id="ticketTypeLabel" layoutX="108.0" layoutY="165.0" text="typeTicket" />
       <Label fx:id="ticketNamelabel" layoutX="530.0" layoutY="34.0" text="name">
          <font>
             <Font size="10.0" />

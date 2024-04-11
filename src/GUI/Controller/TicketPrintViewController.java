@@ -17,15 +17,17 @@ public class TicketPrintViewController {
     private TicketNController ticketNController;
     private Ticket ticket;
     private int currentIndex = 0;
+    private String ticketType;
 
 
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
-    public void setTicket(Ticket ticket) {
+    public void setTicket(Ticket ticket, String ticketType) {
         this.ticket = ticket;
         displayTicket();
+        ticketNController.ticketTypeLabel.setText(ticketType);
     }
 
     private void displayTicket() {
