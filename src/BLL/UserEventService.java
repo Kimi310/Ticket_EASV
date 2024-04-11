@@ -33,8 +33,10 @@ public class UserEventService {
         return placeholder;
     }
 
-    public void addUser(String userName, String email){
-        single.addUser(addUser.addUser(userName,email));
+    public int addUser(String userName, String email){
+        User user = addUser.addUser(userName,email);
+        single.addUser(user);
+        return user.getId();
     }
 
     public void addUserEvent(int userId,int eventId){

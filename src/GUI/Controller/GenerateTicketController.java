@@ -1,6 +1,9 @@
 package GUI.Controller;
 
+import BE.Event;
 import BE.Ticket;
+import BLL.EventService;
+import BLL.UserEventService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +17,7 @@ import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GenerateTicketController {
 
@@ -23,6 +27,9 @@ public class GenerateTicketController {
     private Stage stage;
     private String eventTime, eventLocation, eventName;
     private Ticket ticket;
+    private UserEventService userEventService = new UserEventService();
+    private EventService eventService = new EventService();
+    private ArrayList<Event> events = new ArrayList<>();
 
     public void setEventCoordinatorController(EventCoordinatorViewController eventCoordinatorViewController) {
         this.eventCoordinatorViewController = eventCoordinatorViewController;
@@ -113,16 +120,21 @@ public class GenerateTicketController {
         //List<Ticket> tickets = new ArrayList<>();
 
         // for (int i = 0; i < amount; i++) {
-            String ticketName = nameField.getText();
-            String ticketEmail = emailField.getText();
-            String ticketPrice = priceField.getText();
-            String serialNumber = generateSerialNumber();
+        String ticketName = nameField.getText();
+        String ticketEmail = emailField.getText();
+        String ticketPrice = priceField.getText();
+        String serialNumber = generateSerialNumber();
 
-            Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName);
-            //tickets.add(ticket);
-            // Add ticket to database?
-
-
+        Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName);
+        int userId = userEventService.addUser(nameField.getText(),emailField.getText());
+        events.addAll(eventService.getEvents());
+        int eventId = -1;
+        for (Event e:events) {
+            if (Objects.equals(e.getName(), eventName)){
+                eventId=e.getId();
+            }
+        }
+        userEventService.addUserEvent(userId,eventId);
         openTicketPrintView(ticket);
         ((Stage) nameField.getScene().getWindow()).close();
     }
@@ -139,8 +151,15 @@ public class GenerateTicketController {
             String serialNumber = generateSerialNumber();
 
             Ticket ticket = new Ticket(ticketName, ticketEmail, ticketPrice, serialNumber, eventTime, eventLocation, eventName);
-        //tickets.add(ticket);
-            // Add ticket to database?
+        int userId = userEventService.addUser(nameField.getText(),emailField.getText());
+        events.addAll(eventService.getEvents());
+        int eventId = -1;
+        for (Event e:events) {
+            if (Objects.equals(e.getName(), eventName)){
+                eventId=e.getId();
+            }
+        }
+        userEventService.addUserEvent(userId,eventId);
 
 
         openTicketPrintView(ticket);
