@@ -6,6 +6,10 @@ import BE.UserEvent;
 import DAL.GetEventUser;
 import DAL.GetEvents;
 import DAL.GetUsers;
+import BE.Customer;
+import BE.CustomerEvent;
+
+
 
 import java.util.ArrayList;
 
@@ -16,10 +20,13 @@ public class BLLSingleton {
     private ArrayList<Event> events = new ArrayList<>();
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<UserEvent> userEvents = new ArrayList<>();
+    private ArrayList<Customer> customer = new ArrayList<>();
+    private ArrayList<CustomerEvent> customerEvents = new ArrayList<>();
     //Getters
     private final GetEvents getEvents = new GetEvents();
     private final GetUsers getUsers = new GetUsers();
     private final GetEventUser getEventUser = new GetEventUser();
+
 
     public static BLLSingleton getInstance() {
         return instance;
@@ -29,6 +36,7 @@ public class BLLSingleton {
        events = getEvents.getEventList();
        users = getUsers.getUsersList();
        userEvents = getEventUser.getUserEvent();
+
     }
 
     // EVENTS
@@ -48,5 +56,9 @@ public class BLLSingleton {
     public ArrayList<User> getUsers() {return users;}
     // USEREVENT
     public ArrayList<UserEvent> getUserEvents() {return userEvents;};
+    // CUSTOMER
+    public ArrayList<Customer> getCustomer() {return customer;}
+    // CUSTOMEREVENT
+    public ArrayList<CustomerEvent> getCustomerEvents() {return customerEvents;};
 
 }

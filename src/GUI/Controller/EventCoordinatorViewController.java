@@ -21,20 +21,20 @@ import java.util.ResourceBundle;
 
 public class EventCoordinatorViewController implements Initializable {
     @FXML
-    private TableColumn<Event,String> nameColumn;
+    private TableColumn<Event, String> nameColumn;
     @FXML
-    private TableColumn<Event,String> timeColumn;
+    private TableColumn<Event, String> timeColumn;
     @FXML
-    private TableColumn<Event,String> locationColumn;
+    private TableColumn<Event, String> locationColumn;
     @FXML
-    private TableColumn<Event,String> notesColumn;
+    private TableColumn<Event, String> notesColumn;
     @FXML
-    private TableColumn<Event,String> endDateColumn;
+    private TableColumn<Event, String> endDateColumn;
     @FXML
-    private TableColumn<Event,String> locationGuidanceColumn;
+    private TableColumn<Event, String> locationGuidanceColumn;
     @FXML
     private TableView<Event> eventTable;
-    private ObservableList<Event> events= FXCollections.observableArrayList();
+    private ObservableList<Event> events = FXCollections.observableArrayList();
     private final EventService eventService = new EventService();
 
     @Override
@@ -43,7 +43,7 @@ public class EventCoordinatorViewController implements Initializable {
         eventTableProperties();
     }
 
-    private void eventTableProperties(){
+    private void eventTableProperties() {
         eventTable.setEditable(true);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -55,7 +55,7 @@ public class EventCoordinatorViewController implements Initializable {
         eventTable.setRowFactory(tv -> {
             TableRow<Event> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount()==2 && !row.isEmpty()){
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
                     Event rowEvent = row.getItem();
                     try {
                         viewUsersForEvent(rowEvent);
@@ -68,12 +68,13 @@ public class EventCoordinatorViewController implements Initializable {
         });
     }
 
-    private void poluteEvents(){
+    private void poluteEvents() {
         ArrayList<Event> placeholder = eventService.getEvents();
-        if (!placeholder.isEmpty()){
+        if (!placeholder.isEmpty()) {
             events.addAll(placeholder);
         }
     }
+
     @FXML
     private void addEvent(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/CreateEventWindow.fxml"));
@@ -128,7 +129,7 @@ public class EventCoordinatorViewController implements Initializable {
 
     @FXML
     private void deleteEvent(ActionEvent actionEvent) {
-        if (eventTable.getSelectionModel().getSelectedItem()!=null){
+        if (eventTable.getSelectionModel().getSelectedItem() != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirm Deletion");
             alert.setHeaderText("Are you sure you want to delete the selected event?");
@@ -147,16 +148,16 @@ public class EventCoordinatorViewController implements Initializable {
             alert.setContentText("Please select an event to delete.");
             alert.showAndWait();
         }
-        }
+    }
 
-    protected void updateEventProperties(String name, String time, String location, String notes, String endDate, String locationGuidance){
+    protected void updateEventProperties(String name, String time, String location, String notes, String endDate, String locationGuidance) {
         //Check If the event already exist
         boolean eventExists = false;
         Event existingEvent = null;
 
         //modify existing event properties
-        for (Event event : eventTable.getItems()){
-            if (event.getName().equals(name)){
+        for (Event event : eventTable.getItems()) {
+            if (event.getName().equals(name)) {
                 existingEvent = event;
                 existingEvent.setName(name);
                 existingEvent.setTime(time);
@@ -172,7 +173,7 @@ public class EventCoordinatorViewController implements Initializable {
         }
 
         //If the event doesnt exist, add a new one
-        if (!eventExists){
+        if (!eventExists) {
             Event newEvent = new Event(name, time, location, notes, endDate, locationGuidance);
             eventService.addEvent(newEvent);
             events.clear();
@@ -183,11 +184,11 @@ public class EventCoordinatorViewController implements Initializable {
 
     private void viewUsersForEvent(Event event) throws IOException {
         Stage primaryStage = (Stage) eventTable.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/UsersForEventView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/CustomerForEventView.fxml"));
         Parent root = loader.load();
-        UsersForEventViewController controller = loader.getController();
+        CustomerForEventViewController controller = loader.getController();
         controller.setEvent(event);
-        controller.poluteUsers();
+        controller.poluteCustomer();
         controller.initializeTableView();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
@@ -219,4 +220,6 @@ public class EventCoordinatorViewController implements Initializable {
             alert.showAndWait();
         }
     }
+
+
 }
