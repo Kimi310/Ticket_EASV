@@ -190,9 +190,8 @@ public class EventCoordinatorViewController implements Initializable {
         controller.setEvent(event);
         controller.poluteUsers();
         controller.initializeTableView();
-        Stage usersForEventStage = new Stage();
+        Stage usersForEventStage = (Stage) eventTable.getScene().getWindow();
         usersForEventStage.setScene(new Scene(root));
-        controller.setEventCoordinatorStage((Stage) eventTable.getScene().getWindow());
         usersForEventStage.show();
     }
 
