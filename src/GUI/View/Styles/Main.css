@@ -44,6 +44,7 @@
 
     /* Top, Right, Bottom, Left */
     -fx-border-width: 0 0 0 0px;
+
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
 }
