@@ -7,8 +7,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class TicketNController {
     public Label ticketNamelabel, ticketEmailLabel, serialNumberLabel, ticketPriceLabel, ticketLocationLabel, ticketTimeLabel, ticketEventNameLabel, ticketTypeLabel;
-    public AnchorPane ticketPane;
-    public Label seatLabel;
+
 
     protected void setNewTicket(String ticketName, String ticketEmail, String ticketPrice, String serialNumber, String eventTime, String eventLocation, String eventName){
         ticketNamelabel.setText(ticketName);
@@ -20,7 +19,5 @@ public class TicketNController {
         ticketEventNameLabel.setText(eventName);
     }
 
-    public void setSeat(String seat) {
-        seatLabel.setText(seat);
-    }
+
 }

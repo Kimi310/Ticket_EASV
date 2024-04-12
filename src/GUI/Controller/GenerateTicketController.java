@@ -95,34 +95,7 @@ public class GenerateTicketController {
         }
     }
 
-    private void openSeatSelectionWindow() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/SeatSelectionView.fxml"));
-        Parent root;
-        try {
-            root = loader.load();
-            SeatSelectionController seatSelectionController = loader.getController();
-            seatSelectionController.setTicketAmount(Integer.parseInt(amountField.getText()));
-            Stage stage = new Stage();
-            stage.setTitle("Seat Selection");
-            stage.setScene(new Scene(root));
-            stage.setOnCloseRequest(event -> {
-                String selectedSeats = seatSelectionController.getSelectedSeats();
-                if (!selectedSeats.equals("No seats selected")) {
-                  //  generateSeatedTickets(selectedSeats);
-                }
-            });
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     private void generateVIPTickets() {
-        //int amount = Integer.parseInt(amountField.getText());
-        //List<Ticket> tickets = new ArrayList<>();
-
-        // for (int i = 0; i < amount; i++) {
         String ticketName = nameField.getText();
         String ticketEmail = emailField.getText();
         String ticketPrice = priceField.getText();
@@ -153,11 +126,6 @@ public class GenerateTicketController {
     }
 
     private void generateNormalTickets() {
-       //String[] seatsArray = selectedSeats.split(", ");
-        //int amount = Math.min(seatsArray.length, Integer.parseInt(amountField.getText()));
-       // List<Ticket> tickets = new ArrayList<>();
-
-
             String ticketName = nameField.getText();
             String ticketEmail = emailField.getText();
             String ticketPrice = priceField.getText();
