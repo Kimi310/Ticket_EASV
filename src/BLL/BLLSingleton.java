@@ -57,6 +57,9 @@ public class BLLSingleton {
     public void addUserEvent(UserEvent userEvent){
         userEvents.add(userEvent);
     }
+    public void deleteUserEvent(Event event){
+        userEvents.removeIf(ue -> ue.getEventID() == event.getId());
+    }
 
     //ADMINS
     public ArrayList<Admin> getAdmins() {
