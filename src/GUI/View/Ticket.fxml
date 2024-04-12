@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="230.0" prefWidth="640.0" styleClass="ticketBG" stylesheets="@Styles/Main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketNController">
+<AnchorPane prefHeight="230.0" prefWidth="640.0" styleClass="ticketBG" stylesheets="@Styles/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TicketNController">
    <children>
       <Label fx:id="serialNumberLabel" layoutX="-48.0" layoutY="107.0" prefHeight="15.0" prefWidth="167.0" rotate="-90.0" text="serial" textFill="WHITE">
          <font>
             <Font size="8.0" />
          </font>
       </Label>
-      <Label fx:id="ticketEventNameLabel" layoutX="77.0" layoutY="34.0" text="EventName">
+      <Label fx:id="ticketEventNameLabel" layoutX="303.0" layoutY="20.0" text="EventName">
          <font>
             <Font name="Tahoma" size="26.0" />
          </font>
@@ -41,5 +42,6 @@
             <Font size="10.0" />
          </font>
       </Label>
+      <ImageView fx:id="qrCodeImageView" fitHeight="130.0" fitWidth="130.0" layoutX="100.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

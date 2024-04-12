@@ -5,6 +5,7 @@ import BE.Ticket;
 import BE.User;
 import BLL.EventService;
 import BLL.UserEventService;
+import com.google.zxing.WriterException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,11 +15,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class GenerateTicketController {
 
@@ -27,11 +27,11 @@ public class GenerateTicketController {
     private EventCoordinatorViewController eventCoordinatorViewController;
     private Stage stage;
     private String eventTime, eventLocation, eventName;
-    private Ticket ticket;
     private UserEventService userEventService = new UserEventService();
     private EventService eventService = new EventService();
     private ArrayList<Event> events = new ArrayList<>();
     private ArrayList<User> users = new ArrayList<>();
+
 
 
     public void setEventCoordinatorController(EventCoordinatorViewController eventCoordinatorViewController) {
@@ -42,7 +42,7 @@ public class GenerateTicketController {
         this.stage = stage;
     }
 
-    public void generateTicket(ActionEvent actionEvent) {
+    public void generateTicket(ActionEvent actionEvent) throws IOException, WriterException {
         if (!isValidNumber(priceField.getText())) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
@@ -95,7 +95,7 @@ public class GenerateTicketController {
         }
     }
 
-    private void generateVIPTickets() {
+    private void generateVIPTickets() throws IOException, WriterException {
         String ticketName = nameField.getText();
         String ticketEmail = emailField.getText();
         String ticketPrice = priceField.getText();
@@ -125,7 +125,7 @@ public class GenerateTicketController {
         ((Stage) nameField.getScene().getWindow()).close();
     }
 
-    private void generateNormalTickets() {
+    private void generateNormalTickets() throws IOException, WriterException {
             String ticketName = nameField.getText();
             String ticketEmail = emailField.getText();
             String ticketPrice = priceField.getText();
@@ -172,7 +172,11 @@ public class GenerateTicketController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (WriterException e) {
+            throw new RuntimeException(e);
         }
     }
+
+
 
 }
