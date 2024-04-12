@@ -11,28 +11,18 @@
    <children>
       <AnchorPane styleClass="middleSection" stylesheets="@Styles/Main.css">
          <children>
-            <VBox prefHeight="720.0" prefWidth="1920.0" styleClass="middleSection" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox prefHeight="300.0" prefWidth="640.0" spacing="20.0" styleClass="middleSection" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="200.0" prefWidth="1920.0" spacing="20.0" styleClass="middleSection">
+                  <HBox alignment="CENTER" spacing="20.0" styleClass="middleSection">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#goToPreviousTicket" styleClass="coolBTN" text="Previous" textAlignment="CENTER">
-                           <font>
-                              <Font size="34.0" />
-                           </font>
-                        </Button>
                         <Button mnemonicParsing="false" onAction="#printCurrentTicket" styleClass="coolBTN" text="Print" textAlignment="CENTER">
-                           <font>
-                              <Font size="34.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#goToNextTicket" styleClass="coolBTN" text="Next" textAlignment="CENTER">
                            <font>
                               <Font size="34.0" />
                            </font>
                         </Button>
                      </children>
                   </HBox>
-                  <HBox fx:id="ticketNHbox" prefHeight="620.0" prefWidth="1920.0" styleClass="middleSection">
+                  <HBox fx:id="ticketNHbox" prefHeight="230.0" prefWidth="640.0" styleClass="middleSection">
                      <children>
                    
                </children>

@@ -37,6 +37,8 @@ public class EventCoordinatorViewController implements Initializable {
     private ObservableList<Event> events= FXCollections.observableArrayList();
     private final EventService eventService = new EventService();
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         poluteEvents();
@@ -182,15 +184,15 @@ public class EventCoordinatorViewController implements Initializable {
 
 
     private void viewUsersForEvent(Event event) throws IOException {
-        Stage primaryStage = (Stage) eventTable.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/UsersForEventView.fxml"));
         Parent root = loader.load();
         UsersForEventViewController controller = loader.getController();
         controller.setEvent(event);
         controller.poluteUsers();
         controller.initializeTableView();
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        Stage usersForEventStage = (Stage) eventTable.getScene().getWindow();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
     }
 
     public void openTicketGenerator(ActionEvent actionEvent) {
@@ -218,5 +220,13 @@ public class EventCoordinatorViewController implements Initializable {
             alert.setContentText("Please select an Event to generate a Ticket(s).");
             alert.showAndWait();
         }
+    }
+    @FXML
+    private void goToAllUsers(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AllUsersView.fxml"));
+        Parent root = loader.load();
+        Stage usersForEventStage = (Stage) eventTable.getScene().getWindow();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
     }
 }

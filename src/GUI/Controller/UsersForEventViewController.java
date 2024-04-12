@@ -3,16 +3,19 @@ package GUI.Controller;
 import BE.Event;
 import BE.User;
 import BLL.UserEventService;
-import BLL.UserService;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,16 +40,6 @@ public class UsersForEventViewController implements Initializable {
         userNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         usersTable.setItems(users);
-        usersTable.setRowFactory(tv -> {
-            TableRow<User> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount()==2 && !row.isEmpty()){
-                    User rowUser = row.getItem();
-                    //implement preview of printing a ticket
-                }
-            });
-            return row;
-        });
     }
 
     public void poluteUsers(){
@@ -60,14 +53,31 @@ public class UsersForEventViewController implements Initializable {
         event = e;
     }
 
-    public void editUser(ActionEvent actionEvent) {
-    }
-
-    public void addUser(ActionEvent actionEvent) {
-    }
-
     public void deleteUser(ActionEvent actionEvent) {
     }
 
 
+    public void goBackBtn(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/EventCoordinatorView.fxml"));
+        Parent root = loader.load();
+        Stage usersForEventStage = (Stage) usersTable.getScene().getWindow();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
+    }
+    @FXML
+    private void goToEvents(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/EventCoordinatorView.fxml"));
+        Parent root = loader.load();
+        Stage usersForEventStage = (Stage) usersTable.getScene().getWindow();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
+    }
+    @FXML
+    private void goToAllUsers(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AllUsersView.fxml"));
+        Parent root = loader.load();
+        Stage usersForEventStage = (Stage) usersTable.getScene().getWindow();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
+    }
 }

@@ -46,7 +46,14 @@ public class BLLSingleton {
 
     // USERS
     public ArrayList<User> getUsers() {return users;}
+
+    public void addUser(User user){
+        users.add(user);
+    }
     // USEREVENT
     public ArrayList<UserEvent> getUserEvents() {return userEvents;};
+    public void addUserEvent(UserEvent userEvent){
+        userEvents.add(userEvent);
+    }
 
 }
