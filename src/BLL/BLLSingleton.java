@@ -14,11 +14,13 @@ public class BLLSingleton {
     private ArrayList<UserEvent> userEvents = new ArrayList<>();
     private ArrayList<Admin> admins = new ArrayList<>();
     private ArrayList<EventCoordinator> coordinators = new ArrayList<>();
+    private ArrayList<EventCoordinatorEvent> ECEvents = new ArrayList<>();
     //Getters
     private final GetEvents getEvents = new GetEvents();
     private final GetUsers getUsers = new GetUsers();
     private final GetEventUser getEventUser = new GetEventUser();
     private final GetAdmins getAdmins = new GetAdmins();
+    private final GetEventCoordinatorsEvent getEventCoordinatorsEvent = new GetEventCoordinatorsEvent();
     private final GetEventCoordinators getEventCoordinators = new GetEventCoordinators();
 
     public static BLLSingleton getInstance() {
@@ -31,6 +33,7 @@ public class BLLSingleton {
        userEvents = getEventUser.getUserEvent();
        admins = getAdmins.getAdmins();
        coordinators = getEventCoordinators.getCoordinators();
+       ECEvents = getEventCoordinatorsEvent.getUserEvent();
     }
 
     // EVENTS
@@ -70,4 +73,7 @@ public class BLLSingleton {
     public ArrayList<EventCoordinator> getCoordinators() {
         return coordinators;
     }
+    //ECEvent
+    public ArrayList<EventCoordinatorEvent> getECEvents() {return ECEvents;};
+
 }
