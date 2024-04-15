@@ -75,5 +75,9 @@ public class BLLSingleton {
     }
     //ECEvent
     public ArrayList<EventCoordinatorEvent> getECEvents() {return ECEvents;};
+    public void addECEvent(EventCoordinatorEvent userEvent){
+        ECEvents.add(userEvent);
+    }
+
 
 }

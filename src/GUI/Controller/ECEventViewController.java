@@ -38,7 +38,15 @@ public class ECEventViewController {
         usersForEventStage.show();
     }
 
-    public void addEC(ActionEvent actionEvent) {
+    public void addEC(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AddECToEvent.fxml"));
+        Parent root = loader.load();
+        AddECToEventController controller = loader.getController();
+        controller.setController(this);
+        controller.setEvent(event);
+        Stage usersForEventStage = new Stage();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
     }
 
     public void deleteEC(ActionEvent actionEvent) {
@@ -55,6 +63,7 @@ public class ECEventViewController {
     }
 
     public void poluteUsers(){
+        coordinators.clear();
         ArrayList<EventCoordinator> placeholder = ECEventService.getECEvents(event);
         if (!placeholder.isEmpty()){
             coordinators.addAll(placeholder);
