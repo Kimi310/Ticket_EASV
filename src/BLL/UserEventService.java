@@ -5,6 +5,7 @@ import BE.User;
 import BE.UserEvent;
 import DAL.AddUser;
 import DAL.AddUserEvent;
+import DAL.DeleteUser;
 import DAL.DeleteUserEvent;
 import javafx.fxml.Initializable;
 
@@ -19,6 +20,7 @@ public class UserEventService {
     private AddUser addUser = new AddUser();
     private AddUserEvent addUserEvent = new AddUserEvent();
     private final DeleteUserEvent deleteUserEvent = new DeleteUserEvent();
+    private DeleteUser deleteUser = new DeleteUser();
 
     public ArrayList<User> getUsersForEvent(Event event){
         ArrayList<User> placeholder = new ArrayList<>();
@@ -51,6 +53,17 @@ public class UserEventService {
         if (deleteUserEvent.deleteUserOnEventAndUser(eventID,userID)){
             single.deleteUserEventOnUserAndEvent(eventID,userID);
             return true;
+        }
+        return false;
+    }
+
+    public boolean deleteUser(int userID){
+        if (deleteUserEvent.deleteUserEventOnUser(userID)){
+            single.deleteUserEventOnUser(userID);
+            if (deleteUser.deleteUser(userID)){
+                single.deleteUser(userID);
+                return true;
+            }
         }
         return false;
     }

@@ -34,7 +34,7 @@ public class AllUsersForAdminViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        allUsers.addAll(userEventService.getAllUsers());
+        poluteAllUsers();
         initializeTableView();
     }
 
@@ -50,6 +50,11 @@ public class AllUsersForAdminViewController implements Initializable {
         usersForEventStage.show();
     }
 
+    private void poluteAllUsers(){
+        allUsers.clear();
+        allUsers.addAll(userEventService.getAllUsers());
+    }
+
     private void initializeTableView(){
         allUsersTable.setEditable(true);
         allUserNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -59,6 +64,10 @@ public class AllUsersForAdminViewController implements Initializable {
 
     @FXML
     private void deleteUser(ActionEvent actionEvent) {
+        if (allUsersTable.getSelectionModel().getSelectedItem()!=null){
+            userEventService.deleteUser(allUsersTable.getSelectionModel().getSelectedItem().getId());
+            poluteAllUsers();
+        }
     }
 
 

@@ -56,6 +56,10 @@ public class BLLSingleton {
         users.add(user);
     }
 
+    public void deleteUser(int userID){
+        users.removeIf(ue -> ue.getId() == userID);
+    }
+
     // USEREVENT
     public ArrayList<UserEvent> getUserEvents() {return userEvents;};
     public void addUserEvent(UserEvent userEvent){
@@ -64,12 +68,13 @@ public class BLLSingleton {
     public void deleteUserEvent(Event event){
         userEvents.removeIf(ue -> ue.getEventID() == event.getId());
     }
-
     public void deleteUserEventOnUserAndEvent(int eventID,int userID){
         userEvents.removeIf(ue -> ue.getEventID() == eventID && ue.getUserID() == userID);
     }
 
-
+    public void deleteUserEventOnUser(int userID){
+        userEvents.removeIf(ue -> ue.getUserID() == userID);
+    }
 
     //ADMINS
     public ArrayList<Admin> getAdmins() {
