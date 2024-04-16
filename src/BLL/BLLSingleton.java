@@ -65,6 +65,10 @@ public class BLLSingleton {
         userEvents.removeIf(ue -> ue.getEventID() == event.getId());
     }
 
+    public void deleteUserEventOnUserAndEvent(int eventID,int userID){
+        userEvents.removeIf(ue -> ue.getEventID() == eventID && ue.getUserID() == userID);
+    }
+
 
 
     //ADMINS

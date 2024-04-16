@@ -22,7 +22,7 @@ public class EventService {
     }
 
     public void deleteEvent(Event event){
-        if(deleteUserEvent.deleteUserEvent(event)){
+        if(deleteUserEvent.deleteUserEventOnEventID(event)){
             single.deleteUserEvent(event);
             if (deleteECEvent.deleteECEvent(event)){
                 single.deleteECEvent(event);
