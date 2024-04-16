@@ -65,6 +65,8 @@ public class BLLSingleton {
         userEvents.removeIf(ue -> ue.getEventID() == event.getId());
     }
 
+
+
     //ADMINS
     public ArrayList<Admin> getAdmins() {
         return admins;
@@ -78,6 +80,9 @@ public class BLLSingleton {
     public ArrayList<EventCoordinatorEvent> getECEvents() {return ECEvents;};
     public void addECEvent(EventCoordinatorEvent userEvent){
         ECEvents.add(userEvent);
+    }
+    public void deleteECEvent(Event event){
+        ECEvents.removeIf(ue -> ue.getEventID() == event.getId());
     }
 
 

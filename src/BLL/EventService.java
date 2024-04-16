@@ -4,6 +4,7 @@ import BE.Event;
 import BE.EventCoordinator;
 import BE.EventCoordinatorEvent;
 import DAL.AddEvent;
+import DAL.DeleteECEvent;
 import DAL.DeleteEvent;
 import DAL.DeleteUserEvent;
 
@@ -14,6 +15,7 @@ public class EventService {
     private final DeleteEvent deleteEvent = new DeleteEvent();
     private final AddEvent addEvent = new AddEvent();
     private final DeleteUserEvent deleteUserEvent = new DeleteUserEvent();
+    private final DeleteECEvent deleteECEvent = new DeleteECEvent();
 
     public Event addEvent(Event event){
         return single.addEventSingle(addEvent.newEvent(event));
@@ -22,9 +24,12 @@ public class EventService {
     public void deleteEvent(Event event){
         if(deleteUserEvent.deleteUserEvent(event)){
             single.deleteUserEvent(event);
-            if(deleteEvent.deleteEvent(event)){
-                System.out.println("test");
-                single.deleteEventSingle(event);
+            if (deleteECEvent.deleteECEvent(event)){
+                single.deleteECEvent(event);
+                if(deleteEvent.deleteEvent(event)){
+                    System.out.println("test");
+                    single.deleteEventSingle(event);
+                }
             }
         }
     }
