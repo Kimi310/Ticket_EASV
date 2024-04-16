@@ -79,5 +79,9 @@ public class AllCoordinatorsController implements Initializable {
 
     @FXML
     private void deleteCoordinator(ActionEvent actionEvent) {
+        if (allCoordinatorsTable.getSelectionModel().getSelectedItem()!=null){
+            eventCoordinatorService.deleteEventCoordinator(allCoordinatorsTable.getSelectionModel().getSelectedItem().getId());
+            poluteAllCoordinators();
+        }
     }
 }

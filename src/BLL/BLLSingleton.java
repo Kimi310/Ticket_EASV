@@ -85,6 +85,9 @@ public class BLLSingleton {
     public ArrayList<EventCoordinator> getCoordinators() {
         return coordinators;
     }
+    public void deleteCoordinator(int ECID){
+        coordinators.removeIf(ue -> ue.getId() == ECID);
+    }
     //ECEvent
     public ArrayList<EventCoordinatorEvent> getECEvents() {return ECEvents;};
     public void addECEvent(EventCoordinatorEvent userEvent){
@@ -92,6 +95,9 @@ public class BLLSingleton {
     }
     public void deleteECEvent(Event event){
         ECEvents.removeIf(ue -> ue.getEventID() == event.getId());
+    }
+    public void deleteECEventOnECID(int ECID){
+        ECEvents.removeIf(ue -> ue.getECID() == ECID);
     }
     public void addCoordinator(EventCoordinator coordinator){
         coordinators.add(coordinator);
