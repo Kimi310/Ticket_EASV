@@ -37,8 +37,9 @@ public class BLLSingleton {
     }
 
     // EVENTS
-    public void addEventSingle(Event event){
+    public Event addEventSingle(Event event){
         events.add(event);
+        return event;
     }
 
     public void deleteEventSingle(Event event){

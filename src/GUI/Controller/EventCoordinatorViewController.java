@@ -2,6 +2,7 @@ package GUI.Controller;
 
 import BE.Event;
 import BE.EventCoordinator;
+import BLL.ECEventService;
 import BLL.EventService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,6 +38,7 @@ public class EventCoordinatorViewController{
     private TableView<Event> eventTable;
     private ObservableList<Event> events= FXCollections.observableArrayList();
     private final EventService eventService = new EventService();
+    private final ECEventService ecEventService = new ECEventService();
     private EventCoordinator coordinator;
 
     public void eventTableProperties(){
@@ -173,10 +175,10 @@ public class EventCoordinatorViewController{
 
         //If the event doesnt exist, add a new one
         if (!eventExists){
-            Event newEvent = new Event(name, time, location, notes, endDate, locationGuidance);
-            eventService.addEvent(newEvent);
+            Event newEvent = eventService.addEvent(new Event(name, time, location, notes, endDate, locationGuidance));
+            ecEventService.addECToEvent(coordinator,newEvent);
             events.clear();
-            events.addAll(eventService.getEvents());
+            events.addAll(eventService.getEventsForEC(coordinator));
         }
     }
 

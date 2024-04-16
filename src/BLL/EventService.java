@@ -15,8 +15,8 @@ public class EventService {
     private final AddEvent addEvent = new AddEvent();
     private final DeleteUserEvent deleteUserEvent = new DeleteUserEvent();
 
-    public void addEvent(Event event){
-        single.addEventSingle(addEvent.newEvent(event));
+    public Event addEvent(Event event){
+        return single.addEventSingle(addEvent.newEvent(event));
     }
 
     public void deleteEvent(Event event){
