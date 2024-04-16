@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import BE.Event;
+import BE.EventCoordinator;
 import BE.User;
 import BLL.UserEventService;
 import javafx.collections.FXCollections;
@@ -22,18 +23,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class UsersForEventViewController implements Initializable {
+public class UsersForEventViewController{
     public TableView<User> usersTable;
     public TableColumn<User,String> userNameColumn;
     public TableColumn<User,String> emailColumn;
     private ObservableList<User> users = FXCollections.observableArrayList();
     private final UserEventService userEventService = new UserEventService();
     private Event event;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
+    private EventCoordinator coordinator;
 
     public void initializeTableView(){
         usersTable.setEditable(true);
@@ -56,10 +53,18 @@ public class UsersForEventViewController implements Initializable {
     public void deleteUser(ActionEvent actionEvent) {
     }
 
+    public void setCoordinator(EventCoordinator ec){
+        coordinator = ec;
+    }
+
 
     public void goBackBtn(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/EventCoordinatorView.fxml"));
         Parent root = loader.load();
+        EventCoordinatorViewController controller = loader.getController();
+        controller.setEventCoordinator(coordinator);
+        controller.poluteEvents();
+        controller.eventTableProperties();
         Stage usersForEventStage = (Stage) usersTable.getScene().getWindow();
         usersForEventStage.setScene(new Scene(root));
         usersForEventStage.show();
@@ -68,6 +73,10 @@ public class UsersForEventViewController implements Initializable {
     private void goToEvents(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/EventCoordinatorView.fxml"));
         Parent root = loader.load();
+        EventCoordinatorViewController controller = loader.getController();
+        controller.setEventCoordinator(coordinator);
+        controller.poluteEvents();
+        controller.eventTableProperties();
         Stage usersForEventStage = (Stage) usersTable.getScene().getWindow();
         usersForEventStage.setScene(new Scene(root));
         usersForEventStage.show();
@@ -76,6 +85,8 @@ public class UsersForEventViewController implements Initializable {
     private void goToAllUsers(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AllUsersView.fxml"));
         Parent root = loader.load();
+        AllUsersViewController controller = loader.getController();
+        controller.setEventCoordinator(coordinator);
         Stage usersForEventStage = (Stage) usersTable.getScene().getWindow();
         usersForEventStage.setScene(new Scene(root));
         usersForEventStage.show();

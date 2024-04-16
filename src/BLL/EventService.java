@@ -1,6 +1,8 @@
 package BLL;
 
 import BE.Event;
+import BE.EventCoordinator;
+import BE.EventCoordinatorEvent;
 import DAL.AddEvent;
 import DAL.DeleteEvent;
 import DAL.DeleteUserEvent;
@@ -25,6 +27,20 @@ public class EventService {
                 single.deleteEventSingle(event);
             }
         }
+    }
+
+    public ArrayList<Event> getEventsForEC(EventCoordinator ec) {
+        ArrayList<Event> placeholder = new ArrayList<>();
+        for (EventCoordinatorEvent e:single.getECEvents()) {
+            if (e.getECID() == ec.getId()){
+                for (Event event:single.getEvents()) {
+                    if (e.getEventID()==event.getId()){
+                        placeholder.add(event);
+                    }
+                }
+            }
+        }
+        return placeholder;
     }
 
     public ArrayList<Event> getEvents (){

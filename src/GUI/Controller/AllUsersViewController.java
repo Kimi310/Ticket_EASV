@@ -1,5 +1,6 @@
 package GUI.Controller;
 
+import BE.EventCoordinator;
 import BE.User;
 import BLL.UserEventService;
 import javafx.collections.FXCollections;
@@ -29,6 +30,7 @@ public class AllUsersViewController implements Initializable {
     private TableColumn<User,String> allUserNameColumn;
     private ObservableList<User> allUsers = FXCollections.observableArrayList();
     private final UserEventService userEventService = new UserEventService();
+    private EventCoordinator coordinator;
 
 
     @Override
@@ -36,10 +38,18 @@ public class AllUsersViewController implements Initializable {
         allUsers.addAll(userEventService.getAllUsers());
         initializeTableView();
     }
+
+    public void setEventCoordinator(EventCoordinator ec){
+        coordinator = ec;
+    }
     @FXML
     private void goToEvents(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/EventCoordinatorView.fxml"));
         Parent root = loader.load();
+        EventCoordinatorViewController controller = loader.getController();
+        controller.setEventCoordinator(coordinator);
+        controller.poluteEvents();
+        controller.eventTableProperties();
         Stage usersForEventStage = (Stage) allUsersTable.getScene().getWindow();
         usersForEventStage.setScene(new Scene(root));
         usersForEventStage.show();
