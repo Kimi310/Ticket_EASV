@@ -84,6 +84,9 @@ public class BLLSingleton {
     public void deleteECEvent(Event event){
         ECEvents.removeIf(ue -> ue.getEventID() == event.getId());
     }
+    public void addCoordinator(EventCoordinator coordinator){
+        coordinators.add(coordinator);
+    }
 
 
 }

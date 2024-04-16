@@ -11,6 +11,7 @@ public class ECEventService {
     private ArrayList<EventCoordinator> coordinators = single.getCoordinators();
     private AddECToEvent addECToEvent = new AddECToEvent();
     public ArrayList<EventCoordinator> getECEvents(Event event){
+        ECEvents.clear();
         ECEvents.addAll(single.getECEvents());
         ArrayList<EventCoordinator> placeholder = new ArrayList<>();
         for (EventCoordinatorEvent ECE: ECEvents) {
