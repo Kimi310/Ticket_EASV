@@ -51,6 +51,10 @@ public class LoginScreenViewController implements Initializable {
             if (Objects.equals(ec.getLogin(), login) && Objects.equals(ec.getPassword(), password)){
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/EventCoordinatorView.fxml"));
                 Parent root = loader.load();
+                EventCoordinatorViewController controller = loader.getController();
+                controller.setEventCoordinator(ec);
+                controller.poluteEvents();
+                controller.eventTableProperties();
                 Stage usersForEventStage = (Stage) passwordtxt.getScene().getWindow();
                 usersForEventStage.setScene(new Scene(root));
                 usersForEventStage.show();

@@ -1,6 +1,8 @@
 package GUI.Controller;
 
 import BE.Event;
+import BE.EventCoordinator;
+import BLL.ECEventService;
 import BLL.EventService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class EventCoordinatorViewController implements Initializable {
+public class EventCoordinatorViewController{
     @FXML
     private TableColumn<Event,String> nameColumn;
     @FXML
@@ -36,16 +38,10 @@ public class EventCoordinatorViewController implements Initializable {
     private TableView<Event> eventTable;
     private ObservableList<Event> events= FXCollections.observableArrayList();
     private final EventService eventService = new EventService();
+    private final ECEventService ecEventService = new ECEventService();
+    private EventCoordinator coordinator;
 
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        poluteEvents();
-        eventTableProperties();
-    }
-
-    private void eventTableProperties(){
+    public void eventTableProperties(){
         eventTable.setEditable(true);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -70,8 +66,8 @@ public class EventCoordinatorViewController implements Initializable {
         });
     }
 
-    private void poluteEvents(){
-        ArrayList<Event> placeholder = eventService.getEvents();
+    public void poluteEvents(){
+        ArrayList<Event> placeholder = eventService.getEventsForEC(coordinator);
         if (!placeholder.isEmpty()){
             events.addAll(placeholder);
         }
@@ -91,6 +87,10 @@ public class EventCoordinatorViewController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setEventCoordinator(EventCoordinator ec){
+        coordinator = ec;
     }
 
     public void editEvent(ActionEvent actionEvent) {
@@ -175,10 +175,10 @@ public class EventCoordinatorViewController implements Initializable {
 
         //If the event doesnt exist, add a new one
         if (!eventExists){
-            Event newEvent = new Event(name, time, location, notes, endDate, locationGuidance);
-            eventService.addEvent(newEvent);
+            Event newEvent = eventService.addEvent(new Event(name, time, location, notes, endDate, locationGuidance));
+            ecEventService.addECToEvent(coordinator,newEvent);
             events.clear();
-            events.addAll(eventService.getEvents());
+            events.addAll(eventService.getEventsForEC(coordinator));
         }
     }
 
@@ -188,6 +188,7 @@ public class EventCoordinatorViewController implements Initializable {
         Parent root = loader.load();
         UsersForEventViewController controller = loader.getController();
         controller.setEvent(event);
+        controller.setCoordinator(coordinator);
         controller.poluteUsers();
         controller.initializeTableView();
         Stage usersForEventStage = (Stage) eventTable.getScene().getWindow();
@@ -225,6 +226,8 @@ public class EventCoordinatorViewController implements Initializable {
     private void goToAllUsers(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AllUsersView.fxml"));
         Parent root = loader.load();
+        AllUsersViewController controller = loader.getController();
+        controller.setEventCoordinator(coordinator);
         Stage usersForEventStage = (Stage) eventTable.getScene().getWindow();
         usersForEventStage.setScene(new Scene(root));
         usersForEventStage.show();

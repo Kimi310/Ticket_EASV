@@ -16,12 +16,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import javax.naming.spi.InitialContextFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AllUsersViewController implements Initializable {
+public class AllUsersForAdminViewController implements Initializable {
     @FXML
     private TableView<User> allUsersTable;
     @FXML
@@ -44,12 +43,8 @@ public class AllUsersViewController implements Initializable {
     }
     @FXML
     private void goToEvents(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/EventCoordinatorView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AdminView.fxml"));
         Parent root = loader.load();
-        EventCoordinatorViewController controller = loader.getController();
-        controller.setEventCoordinator(coordinator);
-        controller.poluteEvents();
-        controller.eventTableProperties();
         Stage usersForEventStage = (Stage) allUsersTable.getScene().getWindow();
         usersForEventStage.setScene(new Scene(root));
         usersForEventStage.show();

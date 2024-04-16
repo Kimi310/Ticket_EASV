@@ -26,6 +26,7 @@ public class ECEventService {
     }
 
     public void addECToEvent(EventCoordinator ec, Event event){
+        System.out.println("Gets to service");
         single.addECEvent(addECToEvent.addECToEvent(ec.getId(),event.getId()));
     }
 }

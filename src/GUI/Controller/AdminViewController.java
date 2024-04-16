@@ -111,4 +111,20 @@ public class AdminViewController implements Initializable {
         usersForEventStage.setScene(new Scene(root));
         usersForEventStage.show();
     }
+
+    public void seeAllUsers(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AllUsersForAdminView.fxml"));
+        Parent root = loader.load();
+        Stage usersForEventStage = (Stage) eventTable.getScene().getWindow();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
+    }
+
+    public void seeAllCoordinators(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AllCoordinators.fxml"));
+        Parent root = loader.load();
+        Stage usersForEventStage = (Stage) eventTable.getScene().getWindow();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
+    }
 }

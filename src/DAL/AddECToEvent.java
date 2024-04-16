@@ -11,6 +11,7 @@ public class AddECToEvent {
     public EventCoordinatorEvent addECToEvent(int ECID, int eventId){
         try(Connection con = cm.getConnection())
         {
+            System.out.println("Gets to dal");
             String sql = "INSERT INTO EventCoordinatorEvent(ECID,EventID) VALUES (?,?)";
             PreparedStatement pt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pt.setInt(1, ECID);
