@@ -40,6 +40,7 @@ public class UsersForEventViewController{
     }
 
     public void poluteUsers(){
+        users.clear();
         ArrayList<User> placeholder = userEventService.getUsersForEvent(event);
         if (!placeholder.isEmpty()){
             users.addAll(placeholder);
@@ -51,6 +52,10 @@ public class UsersForEventViewController{
     }
 
     public void deleteUser(ActionEvent actionEvent) {
+        if (usersTable.getSelectionModel().getSelectedItem()!=null){
+            userEventService.deleteUserFromEvent(event.getId(),usersTable.getSelectionModel().getSelectedItem().getId());
+            poluteUsers();
+        }
     }
 
     public void setCoordinator(EventCoordinator ec){

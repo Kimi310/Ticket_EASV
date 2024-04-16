@@ -23,4 +23,18 @@ public class DeleteECEvent {
             return false;
         }
     }
+
+    public boolean deleteECEventOnECID(int ECID) {
+        try(Connection con = cm.getConnection())
+        {
+            String sql = "DELETE FROM EventCoordinatorEvent WHERE ECID = ?";
+            PreparedStatement pt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            pt.setInt(1, ECID);
+            pt.executeQuery();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e);
+            return false;
+        }
+    }
 }

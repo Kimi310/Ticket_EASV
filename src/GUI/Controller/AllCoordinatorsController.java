@@ -33,7 +33,7 @@ public class AllCoordinatorsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        allCoordinators.addAll(eventCoordinatorService.getCoordinators());
+        poluteAllCoordinators();
         initializeTableView();
     }
     @FXML
@@ -51,9 +51,11 @@ public class AllCoordinatorsController implements Initializable {
         allCoordinatorsTable.setItems(allCoordinators);
     }
 
-    @FXML
-    private void deleteUser(ActionEvent actionEvent) {
+    public void poluteAllCoordinators(){
+        allCoordinators.clear();
+        allCoordinators.addAll(eventCoordinatorService.getCoordinators());
     }
+
 
     public void seeAllUsers(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AllUsersForAdminView.fxml"));
@@ -63,4 +65,23 @@ public class AllCoordinatorsController implements Initializable {
         usersForEventStage.show();
     }
 
+
+    @FXML
+    private void addCoordinator(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AddEventCoordinator.fxml"));
+        Parent root = loader.load();
+        AddEventCoordinatorController controller = loader.getController();
+        controller.setController(this);
+        Stage usersForEventStage = new Stage();
+        usersForEventStage.setScene(new Scene(root));
+        usersForEventStage.show();
+    }
+
+    @FXML
+    private void deleteCoordinator(ActionEvent actionEvent) {
+        if (allCoordinatorsTable.getSelectionModel().getSelectedItem()!=null){
+            eventCoordinatorService.deleteEventCoordinator(allCoordinatorsTable.getSelectionModel().getSelectedItem().getId());
+            poluteAllCoordinators();
+        }
+    }
 }
